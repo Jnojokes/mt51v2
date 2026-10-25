@@ -1,0 +1,1371 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mauro Testatonda · Suole per il lusso</title>
+<meta name="description" content="Un unico interlocutore per trasformare la tua idea in una suola di eccellenza. Design, prototipazione 3D e produzione: tutto in una regia.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0B0A">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Mauro Testatonda">
+<meta property="og:title" content="Mauro Testatonda · Suole per il lusso">
+<meta property="og:description" content="Un unico interlocutore per trasformare la tua idea in una suola di eccellenza. Design, prototipazione 3D e produzione: tutto in una regia.">
+<meta property="og:image" content="/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Una scarpa sola in un cerchio di luce, il regista in ombra">
+
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300..600&display=swap">
+<script>(function(){var d=document.documentElement,t=null;try{var q=new URLSearchParams(location.search).get('tema');if(q==='chiaro'||q==='scuro')t=q==='chiaro'?'light':'dark';else t=localStorage.getItem('mt-tema')}catch(e){}if(t==='light'||t==='dark')d.dataset.theme=t})();document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion');</script>
+<style>
+/* Concept: il regista nell'ombra. La tua attenzione è la luce che lo scopre; ogni parola si scalda
+   come metallo in forgia. Verbo: scaldare e temprare. Un solo orologio (ticker GSAP). */
+:root{
+  --ink:#0B0B0A;          /* fondo */
+  --ink-2:#141311;        /* piani */
+  --ink-3:#1C1A17;        /* piani rialzati */
+  --bone:#F0EEE8;         /* testo */
+  --ash:#A9A49C;          /* secondario (7.6:1 sul fondo) */
+  --dim:#7E7971;          /* titolo freddo */
+  --line:rgba(var(--bone-rgb),.13);
+  --ember:#E0612F;        /* arancio metallo: calore e azioni */
+  --ember-hi:#FFB28C;
+  --on-ember:#160A06;
+  --glass:rgba(22,21,19,.9);
+  --ink-rgb:11,11,10; --bone-rgb:240,238,232;
+  --sheen:rgba(255,255,255,.035);
+  --tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='turbulence' baseFrequency='.045' numOctaves='2' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  --pool-a:rgba(240,238,232,.075); --pool-b:rgba(224,97,47,.05);
+  --stamp:#D65C2C; --stamp-line:rgba(214,92,44,.6); --stamp-hi:rgba(255,255,255,.07); --stamp-lo:rgba(0,0,0,.75);
+  --ph:#6d6862; --card-shadow:rgba(0,0,0,.6);
+  --f-display:"Instrument Serif","Iowan Old Style","Times New Roman",serif;
+  --f-ui:"Geist","Helvetica Neue",Arial,sans-serif;
+  --fs-mega:clamp(2.9rem,8.2vw,9.4rem);
+  --fs-h1:clamp(2.55rem,5.5vw,6.1rem);
+  --fs-h2:clamp(2.3rem,4.5vw,4.9rem);
+  --fs-h3:clamp(2rem,3.1vw,3.3rem);
+  --fs-body:clamp(1rem,.96rem + .14vw,1.06rem);
+  --gut-l:max(16px,env(safe-area-inset-left,0px));
+  --gut-r:max(16px,env(safe-area-inset-right,0px));
+  --pad:clamp(4px,4.2vw,64px);
+  --e-soft:cubic-bezier(.165,.84,.44,1);  /* power3.out */
+  --e-out:cubic-bezier(.16,1,.3,1);       /* expo.out */
+  --z-content:10;--z-progress:55;--z-cap:45;--z-nav:50;--z-menu:70;--z-grain:90;--z-loader:100;--z-skip:200;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}[hidden]{display:none!important}
+html{background:var(--ink);scroll-padding-top:72px}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--ink);color:var(--bone);font-family:var(--f-ui);font-size:var(--fs-body);font-weight:300;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+::selection{background:var(--ember);color:var(--ink)}
+:focus-visible{outline:2px solid var(--ember-hi);outline-offset:3px}
+.nw{white-space:nowrap}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:max(16px,env(safe-area-inset-left,0px));top:-80px;z-index:var(--z-skip);background:var(--bone);color:var(--ink);padding:12px 18px;font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:var(--z-grain);opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+.pelle{background-color:var(--ink);background-image:radial-gradient(120% 80% at 50% 0%,var(--sheen),transparent 60%),var(--tex)}
+.wrap{padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.inner{width:100%;max-width:1440px;margin-inline:auto;padding-inline:var(--pad)}
+.label{font-family:var(--f-ui);font-size:.72rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ash)}
+.label.hot{color:var(--ember)}
+.label b,.marchio{display:inline-grid;place-items:center;position:relative;min-width:2.7em;height:1.8em;padding:0 .55em;margin-right:.85em;vertical-align:middle;border:1px solid var(--stamp-line);border-radius:50%;font-family:var(--f-display);font-weight:400;font-size:1.22em;letter-spacing:.02em;line-height:1;color:var(--stamp);font-variant-numeric:tabular-nums;text-shadow:0 1px 0 var(--stamp-hi),0 -1px 0 var(--stamp-lo)}
+/* marchio a fuoco: quando il capitolo entra il numero si scalda, poi si raffredda */
+.label b::after,.marchio::after{content:"";position:absolute;inset:-7px -9px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,170,110,.55),rgba(224,97,47,.28) 55%,transparent);opacity:0;transition:opacity 1.1s var(--e-soft);pointer-events:none}
+.label b.hot::after,.marchio.hot::after{opacity:1;transition-duration:.18s}
+.display{font-family:var(--f-display);font-weight:400;letter-spacing:-.012em;line-height:.98;text-wrap:balance}
+.display em{font-style:italic}
+p{max-width:62ch}
+.muted{color:var(--ash)}
+.heat .w{display:inline-block;white-space:nowrap}
+.heat .c{display:inline-block}
+html.forgia .heat[data-heat] .c,html.forgia .heat[data-load] .c{color:var(--dim)}
+/* l'occhio di bue torna su ogni capitolo: una pozza di luce passa sul titolo mentre si scalda */
+html.forgia .heat[data-heat]{position:relative;isolation:isolate}
+html.forgia .heat[data-heat]::before{content:"";position:absolute;left:0;right:0;top:-70%;bottom:-70%;z-index:-1;pointer-events:none;opacity:var(--lume,0);background:radial-gradient(closest-side,var(--pool-a),var(--pool-b) 45%,transparent 100%)}
+html.splitting [data-split]{visibility:hidden}
+.split-line{padding-bottom:.08em;margin-bottom:-.08em}
+
+/* ——— bottoni: il calore entra dal lato del puntatore ——— */
+.btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;padding:0 1.5rem;border:1px solid rgba(var(--bone-rgb),.24);background:rgba(var(--bone-rgb),.03);color:var(--bone);text-decoration:none;font-family:var(--f-ui);font-size:.72rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;overflow:clip;transition:color .3s,border-color .3s,scale .2s var(--e-soft);cursor:pointer}
+.btn .fill{position:absolute;inset:0;z-index:-1;background:var(--ember);clip-path:circle(0% at 50% 50%);pointer-events:none}
+/* impuntura: sul pieno c'è sempre, sul vuoto compare quando il bottone si scalda */
+.btn::after{content:"";position:absolute;inset:4px;border:1px dashed currentColor;opacity:0;pointer-events:none;transition:opacity .35s var(--e-soft)}
+.btn.solid::after{opacity:.32}
+.btn.is-filled::after,.btn:focus-visible::after{opacity:.4}
+/* l'etichetta sale: la parola calda sostituisce quella fredda */
+.btn .lbl{position:relative;display:inline-grid;overflow:clip;line-height:1.3;padding-block:.08em}
+.btn .lbl > span{grid-area:1/1;transition:translate .55s var(--e-out)}
+.btn .lbl .b{translate:0 115%}
+.btn.is-filled .lbl .a{translate:0 -115%}
+.btn.is-filled .lbl .b{translate:0 0}
+/* freccia: dice dove porta (→ nella pagina, ↗ fuori, ↓ si scarica) e si sposta di 4 px */
+.btn .arr{width:14px;height:14px;flex:none;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:translate .45s var(--e-out)}
+.btn.is-filled .arr,.btn:focus-visible .arr{translate:4px 0}
+.btn.is-filled .arr.up,.btn:focus-visible .arr.up{translate:3px -3px}
+.btn.is-filled .arr.down,.btn:focus-visible .arr.down{translate:0 3px}
+#capitoli .go .arr{display:none}
+.btn.solid{background:var(--ember);border-color:var(--ember);color:var(--on-ember)}
+.btn.solid .fill{background:var(--bone)}
+.btn.is-filled{color:var(--on-ember);border-color:var(--ember)}
+.btn.solid.is-filled{border-color:var(--bone)}
+.btn:active{scale:.97;color:var(--on-ember)}
+.btn:active .fill{clip-path:circle(150% at 50% 50%)}
+html:not(.js) .btn:hover{background:var(--ember);color:var(--on-ember)}
+@media (prefers-reduced-motion:reduce){
+  .btn:focus-visible{color:var(--on-ember)} .btn:focus-visible .fill{clip-path:none}
+}
+@media (prefers-reduced-motion:reduce) and (hover:hover){
+  .btn:hover{color:var(--on-ember)} .btn:hover .fill{clip-path:none}
+}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.icon-btn{display:inline-grid;place-items:center;width:48px;height:48px;border:1px solid var(--line);background:rgba(var(--bone-rgb),.03);cursor:pointer;transition:border-color .25s}
+.icon-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;transition:translate .3s var(--e-soft)}
+@media (hover:hover){.icon-btn:hover{border-color:var(--ember)}.icon-btn[data-dir="1"]:hover svg{translate:4px 0}.icon-btn[data-dir="-1"]:hover svg{translate:-4px 0}}
+.icon-btn[data-dir="1"]:focus-visible svg{translate:4px 0}.icon-btn[data-dir="-1"]:focus-visible svg{translate:-4px 0}
+.icon-btn[disabled]{opacity:.35;cursor:default}
+/* filamento caldo sotto i link di navigazione */
+.draw{background:linear-gradient(90deg,var(--ember),var(--bone)) left bottom / 0% 1px no-repeat;transition:background-size .45s var(--e-soft);padding-bottom:3px}
+@media (hover:hover){a:hover > .draw,button:hover > .draw,.draw:hover{background-size:100% 1px}}
+a:focus-visible > .draw,button:focus-visible > .draw,[aria-current="true"] > .draw{background-size:100% 1px}
+/* immagini: scala dentro la cornice + luce calda dal basso */
+.hov{position:relative;overflow:clip}
+.hov img{transition:scale .9s var(--e-out)}
+.hov::after{content:"";position:absolute;inset:auto 0 0;height:55%;background:linear-gradient(0deg,rgba(224,97,47,.24),transparent);opacity:0;transition:opacity .5s var(--e-soft);pointer-events:none}
+@media (hover:hover){.hov:hover img{scale:1.06}.hov:hover::after{opacity:1}}
+.hov:focus-within img{scale:1.06}.hov:focus-within::after{opacity:1}
+@media (prefers-reduced-motion:reduce){.hov img{transition:none}.hov:hover img,.hov:focus-within img{scale:1}}
+
+/* ——— loader: conta fino a 25 nel punto esatto dell'etichetta del hero ——— */
+#loader{display:none;position:fixed;inset:0;z-index:var(--z-loader);pointer-events:none}
+html.js.motion #loader{display:block;animation:guard .6s .8s cubic-bezier(.87,0,.13,1) forwards}
+@keyframes guard{to{clip-path:inset(0 0 100% 0);visibility:hidden}}
+#loader .panel{position:absolute;inset:0;background:var(--ink)}
+#loader .count,#loader .bar{opacity:0}#loader.counting .count,#loader.counting .bar{opacity:1}
+#loader .count{position:fixed;left:50%;top:40%;translate:-50% 0;white-space:nowrap;font-variant-numeric:tabular-nums}
+#loader .bar{position:absolute;left:50%;bottom:calc(14% + env(safe-area-inset-bottom,0px));width:120px;height:1px;margin-left:-60px;background:var(--line);overflow:clip}
+#loader .bar i{position:absolute;inset:0;background:var(--ember);transform-origin:left;transform:scaleX(0)}
+#loader .wm{position:absolute;left:0;right:0;top:calc(26px + env(safe-area-inset-top,0px));text-align:center;font-family:var(--f-display);font-size:1.45rem}
+
+/* ——— nav ——— */
+.nav{position:fixed;inset:0 0 auto;z-index:var(--z-nav);padding-top:env(safe-area-inset-top,0px);pointer-events:none}
+.nav::before{content:"";position:absolute;inset:0 0 auto;height:calc(118px + env(safe-area-inset-top,0px));background:linear-gradient(180deg,rgba(var(--ink-rgb),.92) 0%,rgba(var(--ink-rgb),.7) 45%,rgba(var(--ink-rgb),0));pointer-events:none}
+.nav{transition:translate .5s var(--e-out)}html.nav-away .nav:not(:focus-within){translate:0 -120%}
+.nav .bar{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:68px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.nav a,.nav button{pointer-events:auto}
+.nav .lang{font-size:.72rem;letter-spacing:.2em;color:var(--ash);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;justify-self:start}
+.nav .lang b{color:var(--bone);font-weight:500}
+.nav .wm{justify-self:center;text-align:center;text-decoration:none;line-height:1;min-height:44px;display:flex;flex-direction:column;justify-content:center}
+.nav .wm .m{font-family:var(--f-display);font-size:1.45rem;letter-spacing:-.01em}
+.nav .wm .s{display:block;margin-top:5px;font-size:.5625rem;letter-spacing:.42em;text-transform:uppercase;color:var(--ash);padding-left:.42em}
+.nav .rt{justify-self:end;display:flex;align-items:center;gap:22px}
+.nav .cta{font-size:.72rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;color:var(--ember);min-height:44px;display:inline-flex;align-items:center}
+.nav .menu{background:none;border:0;display:flex;align-items:center;gap:10px;font:500 .72rem/1 var(--f-ui);letter-spacing:.22em;text-transform:uppercase;cursor:pointer;min-height:44px;padding:0 4px}
+.nav .menu i{display:grid;gap:4px}.nav .menu i b{display:block;width:16px;height:1px;background:currentColor;transition:translate .35s var(--e-soft)}
+@media (hover:hover){.nav .menu:hover i b:first-child{translate:3px 0}.nav .menu:hover i b:last-child{translate:-3px 0}}
+@media (max-width:900px){.nav .lang,.nav .cta,.nav .wm .s{display:none}.nav .bar{grid-template-columns:1fr auto;height:60px}.nav .wm{justify-self:start;text-align:left}.nav .wm .m{font-size:1.3rem}}
+#menu{position:fixed;inset:0;z-index:var(--z-menu);background:var(--ink);overflow:auto;padding:max(84px,calc(env(safe-area-inset-top,0px) + 70px)) var(--gut-r) 40px var(--gut-l)}
+#menu nav{max-width:1040px;margin-inline:auto;width:100%;display:grid}
+#menu .head{max-width:1040px;margin:0 auto 14px;width:100%;display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
+#menu .head .label:last-child{color:var(--dim)}
+#menu nav a{text-decoration:none;display:grid;grid-template-columns:clamp(104px,34vw,470px) auto minmax(0,1fr);align-items:center;column-gap:clamp(14px,2.6vw,36px);min-height:clamp(52px,7.6vh,70px);color:var(--bone);padding:2px 0}
+#menu .layer{display:block;transform-origin:50% 50%}
+#menu .layer svg{display:block;width:100%;height:auto;overflow:visible}
+#menu .layer path{fill:rgba(var(--bone-rgb),.035);stroke:var(--ash);stroke-width:1.15;vector-effect:non-scaling-stroke;transition:stroke .3s,fill .3s}
+#menu .layer .st{fill:none;stroke-dasharray:3 3}
+#menu .layer .ln{fill:none}
+#menu .layer .dot{fill:var(--ash);stroke:none;transition:fill .3s}
+#menu nav a[aria-current="true"] .layer path,#menu nav a:focus-visible .layer path{stroke:var(--ember);fill:rgba(224,97,47,.14)}
+#menu nav a[aria-current="true"] .layer .st,#menu nav a[aria-current="true"] .layer .ln,#menu nav a:focus-visible .layer .st{fill:none}
+#menu nav a[aria-current="true"] .layer .dot,#menu nav a:focus-visible .layer .dot{fill:var(--ember)}
+@media (hover:hover){#menu nav a:hover .layer path{stroke:var(--ember);fill:rgba(224,97,47,.14)}#menu nav a:hover .layer .st,#menu nav a:hover .layer .ln{fill:none}#menu nav a:hover .layer .dot{fill:var(--ember)}}
+#menu nav a .tx{display:grid;gap:3px;min-width:0}
+#menu nav a .t{justify-self:start;font-family:var(--f-display);font-size:clamp(1.55rem,3.1vw,2.7rem);line-height:1.02;transition:translate .45s var(--e-soft),color .3s}
+#menu nav a small{font:300 .82rem var(--f-ui);color:var(--ash);letter-spacing:0}
+#menu nav a small i{font-style:normal;font-weight:500;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+#menu nav a[aria-current="true"] .t{color:var(--ember)}
+@media (hover:hover){#menu nav a:hover .t{translate:8px 0}}
+#menu nav a:focus-visible{outline:none}#menu nav a:focus-visible .t{translate:8px 0;outline:2px solid var(--ember-hi);outline-offset:4px}
+#menu .foot{max-width:1040px;margin:22px auto 0;width:100%;display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;padding-top:20px;border-top:1px solid var(--line)}
+#menu .foot .label{margin-right:auto}
+#menu .close{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:max(16px,env(safe-area-inset-right,0px));background:var(--ink);border:1px solid var(--line);min-height:44px;padding:0 18px;font:500 .72rem var(--f-ui);letter-spacing:.22em;text-transform:uppercase;cursor:pointer}
+@media (max-width:640px){#menu nav a small .sub{display:none}#menu nav a{min-height:54px}}
+
+.sweep{position:absolute;inset:0;z-index:1;pointer-events:none;visibility:hidden;background:linear-gradient(100deg,transparent 32%,rgba(255,244,232,.17) 50%,transparent 68%)}
+/* ——— cambio scena: sui salti lunghi cala il sipario con il cartello del capitolo ——— */
+#sipario{position:fixed;inset:0;z-index:80;display:none;place-items:center;background:var(--ink);visibility:hidden;pointer-events:none;overflow:clip}
+#sipario::before{content:"";position:absolute;left:50%;top:50%;width:min(86vw,900px);aspect-ratio:2/1;translate:-50% -50%;background:radial-gradient(closest-side,var(--pool-a),var(--pool-b) 50%,transparent)}
+#sipario .in{position:relative;display:grid;justify-items:center;gap:16px;text-align:center;padding-inline:var(--gut-l) var(--gut-r)}
+#sipario .t{font-size:clamp(3rem,9vw,8.4rem);line-height:.9;margin:0;color:var(--bone)}
+#sipario .n{margin:0;font-size:1.05rem}
+/* ——— avanzamento e capitoli ——— */
+.progress{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:2px;background:var(--line);z-index:var(--z-progress);pointer-events:none}
+.progress i{position:absolute;inset:0;background:var(--bone);transform-origin:left;transform:scaleX(0)}
+.progress b{position:absolute;left:-3px;top:-1.5px;width:5px;height:5px;border-radius:50%;background:var(--ember);box-shadow:0 0 10px 2px rgba(224,97,47,.7)}
+#capitoli{position:fixed;z-index:var(--z-cap);display:flex;align-items:center;gap:12px;color:var(--bone)}
+#capitoli .apri{display:flex;align-items:center;gap:10px;background:none;border:0;cursor:pointer;min-height:48px;padding:0 4px;text-align:left}
+#capitoli .num{font-size:.95rem;margin-right:0}
+#capitoli .nome{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
+#capitoli .segs{display:flex;gap:3px}
+#capitoli .segs b{display:block;position:relative;width:12px;height:2px;background:rgba(var(--bone-rgb),.24);overflow:clip}
+#capitoli .segs b i{position:absolute;inset:0;background:var(--ember);transform-origin:left;transform:scaleX(0)}
+#capitoli .go{min-height:40px;padding:0 1rem;font-size:.68rem}
+@media (max-width:900px){
+  .progress{display:none}
+  #capitoli{left:max(10px,env(safe-area-inset-left,0px));right:max(10px,env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:6px 6px 6px 12px;background:var(--glass);border:1px solid rgba(var(--bone-rgb),.12);border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.45);justify-content:space-between;transition:translate .5s var(--e-out)}
+  html.frame-away #capitoli{translate:0 160%}
+  #capitoli .wrapseg{display:grid;gap:6px;min-width:0}
+  #capitoli .go{border-radius:10px;transition:opacity .3s,visibility .3s}
+  #capitoli.at-contact .go,html.motion #capitoli.at-start .go{opacity:0;visibility:hidden}
+  html.motion #capitoli.at-start{translate:0 160%} /* il primo schermo resta pulito: la barra arriva quando scorri */
+  body{padding-bottom:84px}
+}
+@media (min-width:901px){
+  #capitoli{right:max(14px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);flex-direction:column;align-items:flex-end;gap:14px;padding:8px 6px;border-radius:999px;background:rgba(var(--ink-rgb),0);transition:background .35s}
+  #capitoli:hover,#capitoli.flash,#capitoli:focus-within{background:rgba(var(--ink-rgb),.6)}
+  #capitoli .go{display:none}
+  #capitoli .apri{flex-direction:row-reverse;gap:12px}
+  #capitoli .wrapseg{position:relative;display:flex;flex-direction:row-reverse;align-items:center;gap:12px}
+  #capitoli .segs{flex-direction:column;gap:5px}
+  #capitoli .segs b{width:2px;height:16px}
+  #capitoli .segs b i{transform-origin:top;transform:scaleY(0)}
+  #capitoli .nome{position:absolute;right:calc(100% + 12px);top:50%;opacity:0;translate:6px -50%;transition:opacity .25s,translate .35s var(--e-soft);text-shadow:0 0 10px rgba(var(--ink-rgb),.9)}
+  #capitoli:hover .nome,#capitoli.flash .nome,#capitoli .apri:focus-visible .nome{opacity:1;translate:0 -50%}
+  #capitoli .segs b{transition:background .3s}
+  @media (hover:hover){#capitoli .apri:hover .segs b{background:rgba(var(--bone-rgb),.55)}}
+}
+@media (prefers-reduced-transparency:reduce){#capitoli{background:var(--ink-3)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+
+/* ——— HERO: l'occhio di bue ——— */
+.hero{position:relative}
+.hero .stage{position:relative;height:100svh;min-height:600px;overflow:clip;display:grid;place-items:center}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 50%}
+@media (max-width:900px){.hero .bg{object-position:63% 50%}}
+.torch{position:absolute;left:0;top:0;width:260vmax;height:260vmax;margin:-130vmax 0 0 -130vmax;pointer-events:none;
+  background:radial-gradient(circle,rgba(var(--ink-rgb),0) 0%,rgba(var(--ink-rgb),0) 3.2%,rgba(var(--ink-rgb),var(--t1,.5)) 7%,rgba(var(--ink-rgb),var(--t2,.86)) 12%,rgba(var(--ink-rgb),var(--t3,.93)) 22%);transition:opacity .6s}
+html:not(.motion) .torch{display:none}
+html.js:not(.motion) .hero .bg{opacity:.6}
+html:not(.js) .hero .bg{opacity:.4}
+.hero .bg-fade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(var(--ink-rgb),.9),transparent 38%);pointer-events:none}
+.hero .copy{position:relative;text-align:center;padding:90px var(--gut-r) 110px var(--gut-l);display:grid;justify-items:center;gap:24px}
+.hero h1{font-size:var(--fs-h1);max-width:15.5ch;margin:0}
+.hero .sub{font-size:1rem;max-width:44ch;color:var(--ash);margin:0}
+.hero .caption{position:absolute;left:max(20px,env(safe-area-inset-left,0px));bottom:58px;opacity:0}
+.hero .caption .display{font-size:var(--fs-h3)}
+.hero .scrollcue{position:absolute;bottom:32px;left:50%;translate:-50% 0;display:grid;justify-items:center;gap:10px}
+.hero .scrollcue i{width:1px;height:34px;background:linear-gradient(var(--bone),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-width:900px){.hero .scrollcue{bottom:104px}}
+@media (max-width:520px){#hero-cta{flex-direction:column;align-items:stretch;width:min(300px,100%)}#hero-cta .btn{width:100%}
+  /* etichetta davvero al centro, freccia sul bordo: niente bottoni che sembrano storti */
+  #hero-cta .btn .arr{position:absolute;right:18px;top:50%;margin-top:-7px}}
+/* sul telefono il hero cresce con il contenuto: niente sovrapposizioni con la nav o con «Scorri la storia» */
+@media (max-width:900px){.hero .stage{height:auto;min-height:100svh}.hero .copy{padding:92px var(--gut-r) 190px var(--gut-l)}}
+#hero-cta .btn:not(.solid){background:rgba(var(--ink-rgb),.55);border-color:rgba(var(--bone-rgb),.32)}
+@media (min-width:901px){html.forgia .hero{height:190svh}html.forgia .hero .stage{position:sticky;top:0}}
+
+/* ——— dichiarazione ——— */
+.statement{padding-block:clamp(96px,16vw,230px);text-align:center}
+.statement .display{font-size:var(--fs-mega);max-width:13ch;margin:22px auto 0}
+.statement p{margin:30px auto 0;color:var(--ash);max-width:46ch}
+.minicta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:30px}
+.minicta .label{color:var(--ash)}
+
+/* ——— chi sono ——— */
+.chi{padding-block:clamp(80px,12vw,170px) 30px}
+.chi .grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);align-items:end}
+.chi h2{font-size:var(--fs-h2);margin:18px 0 0}
+.chi .txt{display:grid;gap:16px;color:var(--ash)}
+.chi .txt p:first-child{color:var(--bone)}
+@media (max-width:900px){.chi .grid{grid-template-columns:1fr}}
+
+/* ——— stories (telefono) ——— */
+html:not(.storymode) .story-ui{display:none!important}
+.hint.story-ui{display:flex}
+.segs-top{position:absolute;left:12px;right:12px;top:12px;z-index:5;display:flex;gap:4px}
+.segs-top b{flex:1;height:2px;background:rgba(var(--bone-rgb),.28);position:relative;overflow:clip;border-radius:2px}
+.segs-top b i{position:absolute;inset:0;background:var(--bone);transform-origin:left;transform:scaleX(0)}
+.tap{position:absolute;top:0;bottom:0;z-index:4;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tap.prev{left:0;width:32%}.tap.next{right:0;width:68%}
+.pausa{position:absolute;right:12px;top:24px;z-index:6;width:44px;height:44px;border:1px solid rgba(var(--bone-rgb),.25);background:rgba(var(--ink-rgb),.45);display:grid;place-items:center;cursor:pointer;border-radius:50%}
+.pausa svg{width:14px;height:14px;fill:var(--bone)}
+.hint{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);align-items:center;gap:8px}
+.hint svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+/* ——— tre fari ——— */
+.fari{position:relative}
+.fari .stage{position:relative}
+.faro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,90px);align-items:center;padding-block:44px}
+.faro .card{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:end;overflow:clip;box-shadow:0 40px 90px var(--card-shadow)}
+.faro .card img{width:100%;height:100%;object-fit:cover}
+.faro .card::before{content:"";position:absolute;inset:10px;border:1px solid rgba(var(--bone-rgb),.18);pointer-events:none;z-index:2}
+.faro .count{font-family:var(--f-display);font-size:1.15rem}
+.faro .count span{color:var(--ash)}
+.faro h3{font-size:clamp(3rem,6.4vw,6.6rem);margin:12px 0 16px}
+.faro .claim{color:var(--bone);max-width:36ch;margin:0}
+.faro .proof{color:var(--ash);max-width:38ch;margin:12px 0 24px}
+.fari .blur{display:none}
+@media (max-width:900px){
+  .faro{grid-template-columns:1fr;padding-block:28px}
+  .faro .card{justify-self:start;max-width:none;aspect-ratio:4/3}
+  html.storymode .fari .inner{padding-inline:0}
+  html.storymode .fari .deck{position:relative;display:grid;background:var(--ink-2);border:1px solid var(--line);overflow:clip;touch-action:pan-y}
+  html.storymode .fari .faro{grid-area:1/1;padding:0;gap:0;visibility:hidden}
+  html.storymode .fari .faro.on{visibility:visible}
+  html.storymode .fari .faro .card{aspect-ratio:4/3;box-shadow:none}
+  html.storymode .fari .faro .card::before{display:none}
+  html.storymode .fari .faro > div:last-child{padding:22px 18px 24px}
+  html.storymode .fari .faro .btn{z-index:6}
+}
+@media (min-width:901px){
+  html.forgia .fari{height:330vh}
+  html.forgia .fari .stage{position:sticky;top:0;height:100svh;overflow:clip}
+  html.forgia .fari .blur{display:block;position:absolute;inset:0}
+  html.forgia .fari .blur img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+  html.forgia .fari .blur::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--ink-rgb),.45),rgba(var(--ink-rgb),.72))}
+  html.forgia .fari .deck{position:relative;height:100%}
+  html.forgia .faro{position:absolute;inset:0;padding:0;visibility:hidden}
+  html.forgia .faro.on{visibility:visible}
+}
+
+/* ——— regia ——— */
+.regia{padding-block:clamp(90px,14vw,200px) clamp(50px,6vw,90px)}
+.regia .head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(26px,6vw,100px);align-items:end}
+.regia h2{font-size:var(--fs-h2);margin:18px 0 0}
+.regia .head .txt{display:grid;gap:20px;justify-items:start}
+@media (max-width:900px){.regia .head{grid-template-columns:1fr}}
+.strisce{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:clamp(44px,7vw,100px);height:min(74svh,720px)}
+.striscia{position:relative;min-width:0;background:var(--ink-2)}
+.striscia img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.striscia .shade{position:absolute;inset:0;background:rgba(var(--ink-rgb),.42);transition:opacity .5s var(--e-soft);pointer-events:none}
+.striscia .t{position:absolute;inset:auto 0 0;padding:22px;background:linear-gradient(0deg,rgba(var(--ink-rgb),.94),transparent);z-index:2}
+.striscia .t .n{font-family:var(--f-display);font-size:1rem;color:var(--ember)}
+.striscia .t h3{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,2.6vw,2.7rem);line-height:1;margin:6px 0}
+.striscia .t .who{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+.striscia .t p{margin:10px 0 0;font-size:.9rem;color:var(--ash);max-width:32ch}
+@media (hover:hover) and (min-width:901px){.striscia .t p{opacity:0;translate:0 10px;transition:opacity .4s var(--e-soft),translate .5s var(--e-soft)}.striscia:hover .t p,.striscia:focus-within .t p{opacity:1;translate:0 0}.striscia:hover .shade{opacity:0}}
+.carousel-ui{display:none;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.dots{display:flex;gap:6px;align-items:center}
+.dots b{width:6px;height:6px;border-radius:50%;background:rgba(var(--bone-rgb),.25);transition:background .25s,scale .25s}
+.dots b.on{background:var(--ember);scale:1.4}
+@media (max-width:900px){
+  .rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-inline:calc(var(--gut-l) * -1) calc(var(--gut-r) * -1);padding-inline:var(--gut-l) var(--gut-r);scroll-padding-inline:var(--gut-l)}
+  .rail::-webkit-scrollbar{display:none}
+  .rail > *{flex:0 0 84%;scroll-snap-align:start}
+  .carousel-ui{display:flex}
+  .strisce{height:auto}
+  .strisce .striscia{height:min(66svh,560px)}
+}
+.tempi{margin-top:clamp(50px,7vw,96px);border-block:1px solid var(--line);display:grid;gap:22px;padding-block:28px}
+.tempi{grid-template-columns:minmax(0,270px) minmax(0,1fr) auto;column-gap:22px}.tempi > *{grid-column:1/-1}
+.tempi .rowt{display:grid;grid-template-columns:subgrid;row-gap:16px;align-items:center}
+.tempi .v{text-align:right}
+.tempi .bar{height:10px;background:rgba(var(--bone-rgb),.08);position:relative;overflow:clip}
+.tempi .bar i{position:absolute;inset:0 auto 0 0;background:var(--bone);width:var(--w);transform-origin:left}
+.tempi .rowt.hot .bar i{background:var(--ember)}
+.tempi .v{font-family:var(--f-display);font-size:clamp(2.4rem,5vw,5rem);line-height:.95;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tempi .rowt.hot .v{color:var(--ember)}
+.tempi .src{font-size:.8rem;color:var(--ash);margin:0}
+@media (max-width:700px){.tempi{grid-template-columns:minmax(0,1fr) auto}.tempi .rowt .label{grid-column:1/-1}.tempi .bar{grid-column:1}}
+
+/* ——— servizi ——— */
+.servizi-head{padding-block:clamp(56px,7vw,100px) clamp(30px,5vw,70px);text-align:center}
+.servizi-head h2{font-size:var(--fs-h2);margin:18px auto 0;max-width:14ch}
+.servizio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:100svh;border-top:1px solid var(--line)}
+.servizio .txt{display:grid;align-content:center;justify-items:start;gap:16px;padding:80px max(var(--pad),var(--gut-l))}
+.servizio h3{font-size:var(--fs-h3);margin:0;line-height:1}
+.servizio .txt p{color:var(--ash);margin:0;max-width:40ch}
+.servizio .img{position:relative;overflow:clip;background:var(--ink-2)}
+.servizio .img img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.servizio:nth-child(even) .txt{order:2}
+@media (max-width:900px){
+  .servizi-wrap{padding-inline:var(--gut-l) var(--gut-r)}
+  .servizio{grid-template-columns:1fr;min-height:0;border:1px solid var(--line);background:var(--ink-2)}
+  .servizio .img{aspect-ratio:4/3;order:-1!important}
+  .servizio .img img{inset:0;height:100%}
+  .servizio .txt{order:2;padding:22px 18px 24px;gap:12px;align-content:start}
+  .servizio h3{font-size:2.1rem}
+}
+
+/* ——— NOS + partner ——— */
+.nos{padding-block:clamp(90px,14vw,200px) 50px}
+.nos .head{max-width:1100px}
+.nos h2{font-size:var(--fs-h2);margin:18px 0 24px}
+.nos .head p{color:var(--ash)}
+.marquee{overflow:clip;border-block:1px solid var(--line);margin-block:clamp(44px,7vw,96px);padding-block:24px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee .track{display:flex;gap:70px;width:max-content;animation:scorri 32s linear infinite}
+html.forgia .marquee .track{animation:none}
+.marquee span{font-family:var(--f-display);font-size:clamp(1.7rem,2.8vw,2.6rem);white-space:nowrap;color:var(--ash)}
+.marquee span b{font-weight:400;color:var(--bone)}
+.marquee span i{font-style:normal;color:var(--ember);margin-left:70px}
+@keyframes scorri{to{transform:translateX(-50%)}}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.trio > div{padding:28px clamp(14px,2.4vw,34px) 30px 0;border-right:1px solid var(--line)}
+.trio > div + div{padding-left:clamp(14px,2.4vw,34px)}
+.trio > div:last-child{border-right:0}
+.trio h3{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,3vw,3rem);margin:12px 0 6px;line-height:1}
+.trio p{margin:0;color:var(--ash);font-size:.95rem}
+@media (max-width:800px){.trio{grid-template-columns:1fr}.trio > div{border-right:0;border-bottom:1px solid var(--line);padding:20px 0!important}}
+.schede{display:none;position:relative;margin-top:56px;padding:4px;border:1px solid var(--line);background:var(--ink-2)}
+.schede .ind{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--bone);transition:translate .45s var(--e-out)}
+.schede[data-i="1"] .ind{translate:100% 0}
+.schede button{position:relative;flex:1;min-height:48px;border:0;background:none;cursor:pointer;font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);transition:color .3s}
+.schede button[aria-selected="true"]{color:var(--ink)}
+.aziende{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,64px);margin-top:clamp(60px,8vw,120px)}
+.azienda h3{font-family:var(--f-display);font-weight:400;font-size:clamp(2.2rem,3.6vw,3.6rem);margin:0 0 6px;line-height:1}
+.azienda .claim{color:var(--ember);font-family:var(--f-display);font-style:italic;font-size:1.35rem;margin:0 0 14px}
+.azienda p{color:var(--ash)}
+.azienda ul{list-style:none;padding:0;margin:20px 0 24px;border-top:1px solid var(--line)}
+.azienda li{padding:12px 0;border-bottom:1px solid var(--line);font-size:.95rem;display:grid;grid-template-columns:18px 1fr;gap:8px}
+.azienda li::before{content:"";width:6px;height:1px;background:var(--ember);margin-top:.8em}
+@media (max-width:860px){.aziende{grid-template-columns:1fr}}
+@media (max-width:900px){html.tabbed .schede{display:flex}html.tabbed .aziende{margin-top:18px}html.tabbed .azienda[hidden]{display:none}}
+.teamslot{margin-top:clamp(60px,8vw,110px);border:1px dashed rgba(var(--bone-rgb),.22);aspect-ratio:21/8;display:grid;place-items:center;text-align:center;padding:24px}
+.teamslot p{margin:10px auto 0;color:var(--ash);font-size:.9rem;max-width:70ch}
+@media (max-width:640px){.teamslot{aspect-ratio:auto;min-height:240px}}
+
+/* ——— garanzie ——— */
+.garanzie{position:relative;padding-block:clamp(90px,14vw,200px)}
+.garanzie h2{font-size:var(--fs-h2);margin:18px 0 0;max-width:15ch}
+.g4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:clamp(44px,7vw,96px);border-top:1px solid var(--line)}
+.g4 article{padding:32px clamp(16px,3vw,44px) 38px 0;border-bottom:1px solid var(--line)}
+.g4 article:nth-child(odd){border-right:1px solid var(--line)}
+.g4 article:nth-child(even){padding-left:clamp(16px,3vw,44px)}
+.g4 h3{margin:0 0 12px}
+.g4 .acc-btn:disabled{pointer-events:none;color:inherit}
+.g4 .acc-btn{all:unset;display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;font-family:var(--f-display);font-size:clamp(2rem,2.8vw,2.8rem);line-height:1;cursor:default}
+.g4 .acc-btn svg{display:none;width:22px;height:22px;stroke:var(--ember);fill:none;stroke-width:1.5;flex:none;transition:rotate .35s var(--e-soft)}
+.g4 p{color:var(--ash);margin:0}
+.g4 .mech{margin-top:14px;color:var(--bone);font-size:.95rem;padding-left:16px;border-left:1px solid var(--ember)}
+@media (max-width:800px){
+  .g4{grid-template-columns:1fr}
+  .g4 article{border-right:0!important;padding:0!important}
+  .g4 .acc-btn{padding:22px 0;cursor:pointer;min-height:48px}
+  .g4 .acc-btn:focus-visible{outline:2px solid var(--ember-hi);outline-offset:2px}
+  .g4 .acc-btn svg{display:block}
+  .g4 .acc-panel{padding-bottom:24px}
+  .g4 article.open .acc-btn svg{rotate:45deg}
+}
+.dignita{position:relative;background:var(--ink);min-height:80svh;display:grid;place-items:center;text-align:center;overflow:clip}
+.dignita img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
+.dignita .display{position:relative;font-size:var(--fs-mega);max-width:12ch;margin:0;padding-inline:var(--gut-l) var(--gut-r)}
+
+/* ——— case history ——— */
+.caso{padding-block:clamp(90px,14vw,190px)}
+.caso .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,100px);align-items:center}
+.caso h2{font-size:var(--fs-h2);margin:18px 0 20px}
+.caso p{color:var(--ash)}
+.embargo{position:relative;aspect-ratio:4/5;overflow:clip;background:var(--ink-2)}
+.embargo img{width:100%;height:100%;object-fit:cover;opacity:.55}
+.embargo .stamp{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px}
+.embargo .stamp b{display:inline-block;border:1px solid var(--ember);color:var(--ember);padding:12px 18px;font:500 .75rem var(--f-ui);letter-spacing:.3em;text-transform:uppercase}
+.embargo .stamp p{margin:16px auto 0;font-size:.9rem;max-width:30ch;color:var(--bone)}
+@media (max-width:900px){.caso .grid{grid-template-columns:1fr}.embargo{aspect-ratio:4/3;order:-1}}
+
+/* ——— blog ——— */
+.blog{padding-block:clamp(80px,12vw,170px)}
+.blog .head{display:flex;justify-content:space-between;align-items:end;gap:26px;flex-wrap:wrap}
+.blog h2{font-size:var(--fs-h2);margin:18px 0 0;max-width:14ch}
+.blog .head p{color:var(--ash);max-width:44ch;margin:0}
+.articoli{position:relative;z-index:1;list-style:none;padding:0;margin:clamp(40px,6vw,84px) 0 0;border-top:1px solid var(--line)}
+.articoli li{position:relative;border-bottom:1px solid var(--line)}
+.articoli a{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:clamp(16px,3vw,40px);align-items:center;padding:28px 0;text-decoration:none}
+.articoli .thumb{display:none}
+.articoli .pil{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ember)}
+.articoli h3{font-family:var(--f-display);font-weight:400;font-size:clamp(1.7rem,2.7vw,2.7rem);line-height:1.05;margin:0;transition:translate .5s var(--e-soft)}
+.articoli .go{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ash);display:inline-flex;gap:8px;align-items:center}
+.articoli .go svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6;transition:translate .3s var(--e-soft)}
+.preview{position:fixed;left:0;top:0;width:min(340px,24vw);aspect-ratio:4/3;translate:-50% -50%;pointer-events:none;z-index:0;opacity:0;visibility:hidden;overflow:clip;-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);mask-image:radial-gradient(closest-side,#000 55%,transparent)}
+.preview img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.articoli h3{text-shadow:0 0 18px rgba(var(--ink-rgb),.85),0 0 3px rgba(var(--ink-rgb),.8)}
+@media (hover:hover){.articoli li:hover h3,.articoli a:focus-visible h3{translate:12px 0}.articoli li:hover .go svg{translate:4px 0}}
+@media (max-width:900px){
+  .articoli{border-top:0;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;margin-inline:calc(var(--gut-l) * -1) calc(var(--gut-r) * -1);padding-inline:var(--gut-l) var(--gut-r);scroll-padding-inline:var(--gut-l)}
+  .articoli::-webkit-scrollbar{display:none}
+  .articoli li{flex:0 0 80%;scroll-snap-align:start;border:1px solid var(--line);background:var(--ink-2)}
+  .articoli a{grid-template-columns:1fr;gap:10px;padding:0 0 20px}
+  .articoli .thumb{display:block;aspect-ratio:16/10;width:100%;object-fit:cover}
+  .articoli .pil,.articoli h3,.articoli .go{padding-inline:16px}
+  .articoli h3{font-size:1.65rem}
+}
+
+/* ——— finale + contatti ——— */
+.finale{position:relative;background:var(--ink);min-height:130svh;display:grid;align-items:center;overflow:clip}
+.finale .bg,.finale .soft{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:33% 50%}
+.finale .soft{opacity:.6}
+.finale .bg-fade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--ink-rgb),.92) 0%,rgba(var(--ink-rgb),.55) 45%,rgba(var(--ink-rgb),.1) 100%)}
+.finale .copy{position:relative;padding-block:140px}
+.finale h2{font-size:clamp(4rem,12vw,12rem);margin:16px 0 20px;line-height:.86}
+.finale .intro{color:var(--bone);max-width:42ch}
+@media (max-width:900px){.finale{min-height:108svh;align-items:end}.finale .bg,.finale .soft{object-position:52% 50%}.finale .bg-fade{background:linear-gradient(0deg,rgba(var(--ink-rgb),.97) 0%,rgba(var(--ink-rgb),.7) 40%,rgba(var(--ink-rgb),.15) 75%)}.finale .copy{padding-block:0 60px}}
+.contatti{padding-block:clamp(60px,9vw,130px)}
+.contatti .grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(30px,6vw,110px)}
+.quick{display:none;gap:10px;margin-bottom:14px}
+.biglietto{position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 32px;padding:clamp(22px,3vw,34px);margin-bottom:clamp(34px,5vw,64px);background:var(--ink-2);border:1px solid var(--line)}
+.biglietto::before{content:"";position:absolute;inset:7px;border:1px dashed rgba(var(--bone-rgb),.16);pointer-events:none} /* impuntura */
+.biglietto .display{font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.08;margin:10px 0 0;max-width:22ch}
+.biglietto .row{position:relative}
+.quick a{flex:1;display:grid;gap:4px;padding:16px;border:1px solid var(--line);background:var(--ink-2);text-decoration:none;min-height:72px;transition:border-color .3s,scale .2s var(--e-soft)}
+.quick a:active{scale:.97;border-color:var(--ember)}
+.quick a b{font-family:var(--f-display);font-weight:400;font-size:1.5rem;line-height:1}
+.quick a span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ash)}
+form{display:grid;gap:20px}
+.field{display:grid;gap:8px;position:relative}
+.field label{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ash)}
+.field input,.field textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(var(--bone-rgb),.28);color:var(--bone);font:300 1.05rem/1.5 var(--f-ui);padding:12px 0;border-radius:0;min-height:48px}
+.field::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--ember);transform-origin:left;transform:scaleX(0);transition:transform .5s var(--e-out);pointer-events:none}
+.field:has(input)::after{top:calc(100% - 1px)}
+.field:has(textarea)::after{display:none}
+.field:focus-within::after{transform:scaleX(1)}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none}
+.field textarea:focus{border-bottom-color:var(--ember)}
+.field input::placeholder,.field textarea::placeholder{color:var(--ph)}
+.field .err{font-size:.82rem;color:var(--ember-hi);min-height:0}
+.field:has(.err:not(:empty))::after{display:none}
+.note{font-size:.84rem;color:var(--dim);margin:0}
+.ok{border:1px solid rgba(224,97,47,.5);padding:18px;font-size:.95rem}.ok p{margin:0 0 14px}
+.diretto{display:grid;gap:24px;align-content:start}
+.diretto .item{border-top:1px solid var(--line);padding-top:16px}
+.diretto .val{font-family:var(--f-display);font-size:clamp(1.7rem,2.6vw,2.4rem);line-height:1.1;margin:8px 0 8px;user-select:all;overflow-wrap:anywhere}
+.copy-btn{background:none;border:0;color:var(--ember);font:500 .72rem var(--f-ui);letter-spacing:.2em;text-transform:uppercase;padding:0;cursor:pointer;min-height:44px}
+@media (hover:hover){.copy-btn:hover{color:var(--ember-hi)}}
+.copy-btn .draw{background-image:linear-gradient(90deg,var(--ember-hi),var(--bone))}
+@media (max-width:900px){.contatti .grid{grid-template-columns:1fr}.quick{display:flex}}
+footer{border-top:1px solid var(--line);padding-block:44px 60px}
+footer .grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end}
+footer .wm{font-family:var(--f-display);font-size:clamp(2rem,4vw,3.4rem);line-height:1}
+footer .small{font-size:.82rem;color:var(--ash);max-width:60ch;margin:12px 0 0}
+footer nav{display:flex;gap:6px 22px;flex-wrap:wrap}
+footer nav a,footer nav span{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--ash);min-height:44px;display:inline-flex;align-items:center}
+@media (hover:hover){footer nav a:hover{color:var(--bone)}}
+
+@media (prefers-reduced-motion:reduce){
+  .marquee .track,.hero .scrollcue i{animation:none}
+  .striscia .t p{opacity:1!important;translate:none!important}
+  *{transition-duration:.01ms!important}
+}
+
+/* ——— tema chiaro «carta e inchiostro»: le scene fotografiche restano buie, come un palco ——— */
+html[data-theme="light"]{--ink:#F2EDE4;--ink-2:#E9E2D6;--ink-3:#DFD7C9;--bone:#1A1714;--ash:#5B544B;--dim:#8C8479;--line:rgba(26,23,20,.14);--ember:#A93B13;--ember-hi:#8E300F;--on-ember:#FFF6EE;--glass:rgba(242,237,228,.94);--ink-rgb:242,237,228;--bone-rgb:26,23,20;--sheen:rgba(255,255,255,.6);--tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='turbulence' baseFrequency='.045' numOctaves='2' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1  0 0 0 0 .08  0 0 0 0 .06  0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");--pool-a:rgba(224,97,47,.10);--pool-b:rgba(224,97,47,.04);--stamp:#A33811;--stamp-line:rgba(163,56,17,.55);--stamp-hi:rgba(255,255,255,.7);--stamp-lo:rgba(0,0,0,.12);--ph:#8C8479;--card-shadow:rgba(60,40,20,.18);color-scheme:light}
+html[data-theme="light"] body::after{filter:invert(1);opacity:.05}
+/* con la luce accesa si accendono anche le luci in sala: il palco resta scuro ma si vede tutto */
+html[data-theme="light"] .hero{--t1:.28;--t2:.46;--t3:.56}
+html[data-theme="light"] .hero .bg{filter:brightness(1.18) contrast(.96)}
+html[data-theme="light"] :is([data-scena],.striscia,.embargo,#loader),
+html[data-theme="light"].nav-dark :is(.nav,.progress),
+html[data-theme="light"].cap-dark #capitoli{--ink:#0B0B0A;--ink-2:#141311;--ink-3:#1C1A17;--bone:#F0EEE8;--ash:#A9A49C;--dim:#7E7971;--line:rgba(240,238,232,.13);--ember:#E0612F;--ember-hi:#FFB28C;--on-ember:#160A06;--glass:rgba(22,21,19,.9);--ink-rgb:11,11,10;--bone-rgb:240,238,232;--sheen:rgba(255,255,255,.035);--tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='turbulence' baseFrequency='.045' numOctaves='2' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");--pool-a:rgba(240,238,232,.075);--pool-b:rgba(224,97,47,.05);--stamp:#D65C2C;--stamp-line:rgba(214,92,44,.6);--stamp-hi:rgba(255,255,255,.07);--stamp-lo:rgba(0,0,0,.75);--ph:#6d6862;--card-shadow:rgba(0,0,0,.6);color-scheme:dark;color:var(--bone)}
+/* interruttore luce / buio */
+.tema{background:none;border:0;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 4px;cursor:pointer;font:500 .72rem/1 var(--f-ui);letter-spacing:.22em;text-transform:uppercase;color:var(--bone)}
+.tema .lamp{position:relative;width:15px;height:15px;border-radius:50%;border:1px solid currentColor;flex:none;transition:background .4s,box-shadow .4s}
+.tema .lamp::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--ember);transition:scale .45s var(--e-out)}
+html[data-theme="light"] .tema .lamp{background:currentColor}
+html[data-theme="light"] .tema .lamp::after{scale:.35}
+@media (hover:hover){.tema:hover .lamp{box-shadow:0 0 0 4px rgba(224,97,47,.18),0 0 18px rgba(224,97,47,.55)}}
+@media (max-width:900px){.nav .tema .lbl{display:none}.nav .tema{padding:0 10px}}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:1}::view-transition-new(root){z-index:2}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Vai ai contenuti</a>
+
+<div id="loader" role="status" aria-label="Caricamento in corso">
+  <div class="panel"></div>
+  <div class="wm" aria-hidden="true">Mauro Testatonda</div>
+  <span class="label hot count" aria-hidden="true">0 anni di esperienza</span>
+  <span class="bar" aria-hidden="true"><i></i></span>
+</div>
+
+<header class="nav">
+  <div class="bar">
+    <a class="lang" href="#top"><span class="draw"><b>IT</b> · EN</span></a>
+    <a class="wm" href="#top"><span class="m">Mauro Testatonda</span><span class="s">Suole per il lusso</span></a>
+    <div class="rt">
+      <a class="cta" href="#contatti"><span class="draw">Parliamone</span></a>
+      <button class="tema" type="button" aria-pressed="false" aria-label="Luce: accendi la luce, tema chiaro"><span class="lamp" aria-hidden="true"></span><span class="lbl draw">Luce</span></button>
+      <button class="menu" type="button" id="apri-menu" aria-controls="menu" aria-expanded="false"><span class="draw">Capitoli</span> <i aria-hidden="true"><b></b><b></b></i></button>
+    </div>
+  </div>
+</header>
+
+<div id="menu" hidden role="dialog" aria-modal="true" aria-label="Indice dei capitoli">
+  <button class="close" type="button" id="chiudi-menu">Chiudi</button>
+  <div class="head"><span class="label hot">Indice</span><span class="label">Spaccato di una suola: ogni strato è un capitolo</span><button class="tema" type="button" aria-pressed="false" aria-label="Luce: accendi la luce, tema chiaro"><span class="lamp" aria-hidden="true"></span><span class="lbl draw">Luce</span></button></div>
+  <nav aria-label="Capitoli" id="indice"></nav>
+  <div class="foot"><span class="label">In fiera o in trasferta</span><a class="btn solid" href="mauro-testatonda.vcf">Salva il contatto</a><a class="btn" href="https://wa.me/393473622388" target="_blank" rel="noopener">WhatsApp</a></div>
+</div>
+
+<div id="sipario" aria-hidden="true"><div class="in"><span class="n marchio">01</span><p class="t display">L’inizio</p><span class="s label">Forma</span></div></div>
+<div class="progress" aria-hidden="true"><i id="prog"></i><b id="prog-dot"></b></div>
+<div id="capitoli">
+  <button class="apri" type="button" id="cap-apri" aria-controls="menu" aria-expanded="false">
+    <span class="sr">Indice dei capitoli, ora: </span><span class="num marchio" id="cap-num">01</span>
+    <span class="wrapseg"><span class="nome draw" id="cap-nome">L'inizio</span><span class="segs" id="cap-segs" aria-hidden="true"></span></span>
+  </button>
+  <a class="btn solid go" href="#contatti">Parliamone</a>
+</div>
+
+<main id="main" tabindex="-1">
+<!-- 01 · HERO -->
+<section class="hero pelle" id="top" data-cap="L'inizio" data-scena>
+  <div class="stage" id="hero-stage">
+    <img class="bg" id="hero-bg" src="img/regista.webp" alt="Mauro Testatonda di spalle, nell'ombra, guarda una scarpa sola in un cerchio di luce" fetchpriority="high" width="1680" height="938">
+    <div class="torch" id="torch" aria-hidden="true"></div>
+    <div class="bg-fade" aria-hidden="true"></div>
+    <div class="copy" id="hero-copy">
+      <span class="label hot" id="hero-badge">25+ anni di esperienza</span>
+      <h1 class="display heat" data-load>Un unico interlocutore per trasformare la tua idea in una suola <em>di eccellenza.</em></h1>
+      <p class="sub" data-split data-intro>25 anni di esperienza al servizio dei brand di lusso. Design, prototipazione 3D e produzione: tutto in una regia.</p>
+      <div class="row" id="hero-cta" style="justify-content:center">
+        <a class="btn solid" href="#contatti">Parliamone</a>
+        <a class="btn" href="https://wa.me/393473622388" target="_blank" rel="noopener">WhatsApp diretto</a>
+      </div>
+    </div>
+    <div class="caption" id="hero-caption" aria-hidden="true"><span class="label">Il regista, nell'ombra</span><div class="display">Una regia, <em>tante competenze.</em></div></div>
+    <div class="scrollcue" id="cue" aria-hidden="true"><span class="label">Scorri la storia</span><i></i></div>
+  </div>
+</section>
+
+<section class="statement pelle wrap">
+  <span class="label">Il mio slogan</span>
+  <p class="display heat" data-heat>Al fianco dei clienti per fare <em>squadra.</em></p>
+  <p>Non è solo un modo di operare: è una filosofia.</p>
+</section>
+
+<!-- 02 · CHI SONO -->
+<section class="chi pelle wrap" id="chi-sono" data-cap="Chi sono">
+  <div class="inner grid">
+    <div>
+      <span class="label"><b>02</b>Chi sono</span>
+      <h2 class="display heat" data-heat>La qualità nasce dalle <em>fondamenta.</em></h2>
+    </div>
+    <div class="txt">
+      <p data-split>Come tecnico-commerciale, il mio obiettivo non è fornirti un componente, ma la base solida su cui costruire e pianificare le tue strategie.</p>
+      <p>Da oltre 25 anni lavoro al fianco dei migliori tecnici dei brand del lusso, degli stilisti di calzature e dei titolari dei calzaturifici, custodi di un sapere sul fare le scarpe che va avanti da generazioni. Sono loro i miei insegnanti.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fari pelle" id="fari" data-scena aria-label="Tre fari dettano ogni mia azione quotidiana">
+  <div class="stage">
+    <div class="blur" aria-hidden="true">
+      <img src="img/suola-cuoio-soft.webp" alt="" width="200" height="111">
+      <img src="img/tecnico-soft.webp" alt="" width="200" height="358">
+      <img src="img/mani-soft.webp" alt="" width="200" height="111">
+    </div>
+    <div class="wrap" style="position:relative;height:100%">
+      <div class="inner" style="height:100%">
+        <div class="deck" id="fari-deck" aria-roledescription="carosello">
+          <div class="segs-top story-ui" aria-hidden="true"></div>
+          <button class="pausa story-ui" type="button" aria-label="Metti in pausa" aria-pressed="false"><svg viewBox="0 0 14 14"><rect x="2" y="1" width="3.5" height="12"/><rect x="8.5" y="1" width="3.5" height="12"/></svg></button>
+          <button class="tap prev story-ui" type="button" aria-label="Faro precedente"></button>
+          <button class="tap next story-ui" type="button" aria-label="Faro successivo"></button>
+          <article class="faro on" data-slide aria-label="1 di 3">
+            <div class="card"><img src="img/suola-cuoio.webp" alt="Suola in cuoio con cucitura del guardolo, sospesa nel buio" loading="lazy" width="1680" height="938"></div>
+            <div class="tx">
+              <div class="count">01 <span>/ 03</span></div>
+              <h3 class="display">Professionalità</h3>
+              <p class="claim">Oltre 25 anni di esperienza, arricchita ogni giorno da chi fa le scarpe da generazioni.</p>
+              <p class="proof">Ogni dettaglio della suola è fondamentale per la riuscita della calzatura.</p>
+              <a class="btn" href="#ruolo">Scopri il mio metodo</a>
+            </div>
+          </article>
+          <article class="faro" data-slide aria-label="2 di 3">
+            <div class="card"><img src="img/tecnico.webp" alt="Disegno tecnico di una suola con righello e calibro" loading="lazy" width="900" height="1613"></div>
+            <div class="tx">
+              <div class="count">02 <span>/ 03</span></div>
+              <h3 class="display">Serietà</h3>
+              <p class="claim">Un impegno preso è un traguardo da raggiungere: un goal da fare.</p>
+              <p class="proof">La puntualità e la cura del servizio sono il mio modo di onorare il tuo lavoro.</p>
+              <a class="btn" href="#ruolo">Scopri il mio metodo</a>
+            </div>
+          </article>
+          <article class="faro" data-slide aria-label="3 di 3">
+            <div class="card"><img src="img/mani.webp" alt="Mani di artigiano che sollevano una suola finita verso la luce" loading="lazy" width="1680" height="938"></div>
+            <div class="tx">
+              <div class="count">03 <span>/ 03</span></div>
+              <h3 class="display">Onestà</h3>
+              <p class="claim">La trasparenza è il collante di ogni partnership duratura.</p>
+              <p class="proof">Meglio chiarire prima gli obiettivi, e valutare insieme metodi e mezzi per raggiungerli.</p>
+              <a class="btn" href="#ruolo">Scopri il mio metodo</a>
+            </div>
+          </article>
+        </div>
+        <p class="hint story-ui" style="margin:14px 0 0;padding-inline:var(--gut-l)"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>Tocca per il prossimo faro</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · LA SFILATA -->
+<!-- 04 · IL MIO RUOLO -->
+<section class="regia pelle wrap" id="ruolo" data-cap="Il mio ruolo">
+  <div class="inner">
+    <div class="head">
+      <div>
+        <span class="label"><b>03</b>Il mio ruolo</span>
+        <h2 class="display heat" data-heat>La regia del progetto, con un unico <em>interlocutore.</em></h2>
+      </div>
+      <div class="txt">
+        <p class="muted" data-split>Gestisco per te il dialogo integrato tra lo studio creativo Top Model e le unità produttive di Del Papa e Da.Mi. Lavorando in squadra, le criticità tecniche si risolvono prima che diventino costi in produzione.</p>
+      </div>
+    </div>
+    <div class="strisce rail" id="rail-regia">
+      <article class="striscia hov" data-reveal><img src="img/schizzo.webp" alt="Schizzo a matita del profilo di una suola" loading="lazy" width="900" height="1613"><span class="shade"></span><div class="t"><div class="n">01</div><h3>Idea</h3><div class="who">Il tuo brief</div><p>Ascolto il brand e leggo la fattibilità dentro lo stile: ogni progetto parte da qui.</p></div></article>
+      <article class="striscia hov" data-reveal><img src="img/tecnico.webp" alt="Disegno tecnico della suola con quote" loading="lazy" width="900" height="1613"><span class="shade"></span><div class="t"><div class="n">02</div><h3>Design</h3><div class="who">Top Model</div><p>Lo studio creativo e tecnico trasforma l’idea in un progetto concreto: disegno e modelleria.</p></div></article>
+      <article class="striscia hov" data-reveal><img src="img/prototipo3d.webp" alt="Prototipo di suola stampato in 3D con intersuola a reticolo" loading="lazy" width="900" height="1613"><span class="shade"></span><div class="t"><div class="n">03</div><h3>Prototipo</h3><div class="who">D‑LAB · Da.Mi</div><p>Suole e prototipi on-demand con stampanti 3D di ultima generazione, su qualsiasi taglia e colore.</p></div></article>
+      <article class="striscia hov" data-reveal><img src="img/pila.webp" alt="Pila di suole in cuoio finite sul banco" loading="lazy" width="900" height="1613"><span class="shade"></span><div class="t"><div class="n">04</div><h3>Produzione</h3><div class="who">Del Papa · Da.Mi</div><p>Cuoio artigianale, stampaggio TPS, TPU, EVA e il nuovo impianto E‑TPU SUPERFOAM.</p></div></article>
+    </div>
+    <div class="carousel-ui" data-for="rail-regia">
+      <div class="dots" aria-hidden="true"></div>
+      <div class="row"><button class="icon-btn" type="button" data-dir="-1" aria-label="Fase precedente"><svg viewBox="0 0 18 18"><path d="M11 3 5 9l6 6"/></svg></button><button class="icon-btn" type="button" data-dir="1" aria-label="Fase successiva"><svg viewBox="0 0 18 18"><path d="m7 3 6 6-6 6"/></svg></button></div>
+    </div>
+    <div class="tempi" id="tempi">
+      <span class="label">Tempi di sviluppo di un prototipo</span>
+      <div class="rowt"><span class="label">Metodo tradizionale</span><div class="bar"><i style="--w:100%"></i></div><div class="v">15-30 giorni</div></div>
+      <div class="rowt hot"><span class="label hot">Con la stampa 3D in D‑LAB</span><div class="bar"><i style="--w:6.7%"></i></div><div class="v">24-48 ore</div></div>
+      <p class="src">Dato di filiera 2024 sulla prototipazione rapida. Le barre sono in scala sul valore medio.</p>
+    </div>
+    <div class="minicta"><a class="btn" href="#nos">Conosci il team</a><span class="label">oppure</span><a class="btn solid" href="#contatti">Parliamone</a></div>
+  </div>
+</section>
+
+<!-- 05 · SERVIZI -->
+<section id="servizi" class="pelle" data-cap="Servizi">
+  <div class="servizi-head wrap">
+    <span class="label"><b>04</b>Servizi</span>
+    <h2 class="display heat" data-heat>Cosa posso fare per il tuo <em>progetto.</em></h2>
+  </div>
+  <div class="servizi-wrap">
+    <div class="servizi-list rail" id="rail-servizi">
+      <article class="servizio"><div class="txt"><h3 class="display">Prototipazione 3D rapida</h3><p>Suole e prototipi on-demand dal D‑LAB, su qualsiasi taglia e colore: i tempi degli stampi si riducono drasticamente.</p><a class="btn" href="#contatti">Richiedi informazioni</a></div><div class="img hov" data-reveal><img src="img/prototipo3d.webp" alt="Prototipo di suola sul piatto della stampante 3D" loading="lazy" data-par width="900" height="1613"></div></article>
+      <article class="servizio"><div class="txt"><h3 class="display">Suole in cuoio artigianali</h3><p>Cuoio lavorato come vuole il lusso, con la flessibilità e il valore dell’anima artigianale di Del Papa.</p><a class="btn" href="#contatti">Richiedi informazioni</a></div><div class="img hov" data-reveal><img src="img/cucitura.webp" alt="Ago e filo cerato nel guardolo di una suola in cuoio" loading="lazy" data-par width="1680" height="938"></div></article>
+      <article class="servizio"><div class="txt"><h3 class="display">Stampaggio TPU, EVA, E‑TPU</h3><p>Materiali tecnici leggeri e sostenibili, dallo stampaggio interno fino al nuovo impianto E‑TPU SUPERFOAM.</p><a class="btn" href="#contatti">Richiedi informazioni</a></div><div class="img hov" data-reveal><img src="img/stampi.webp" alt="Scaffali di stampi per suole in un reparto in penombra" loading="lazy" data-par width="1680" height="938"></div></article>
+      <article class="servizio"><div class="txt"><h3 class="display">Dal design alla produzione</h3><p>Disegno, modelleria, stampo, produzione: un ciclo integrato con una regia sola e tante competenze.</p><a class="btn" href="#contatti">Richiedi informazioni</a></div><div class="img hov" data-reveal><img src="img/s-06.webp" alt="Oxford sospesa nel cono di luce" loading="lazy" data-par width="1680" height="938"></div></article>
+      <article class="servizio"><div class="txt"><h3 class="display">Collezione Open Market</h3><p>La visione creativa della rete NOS in una collezione pronta, per chi cerca il meglio del settore in tempi rapidi.</p><span class="label hot">Design &amp; Performance Made in Italy</span><a class="btn" href="#contatti">Richiedi informazioni</a></div><div class="img hov" data-reveal><img src="img/s-03.webp" alt="Sneaker con suola tecnica sotto l'occhio di bue" loading="lazy" data-par width="1680" height="938"></div></article>
+    </div>
+    <div class="carousel-ui" data-for="rail-servizi">
+      <div class="dots" aria-hidden="true"></div>
+      <div class="row"><button class="icon-btn" type="button" data-dir="-1" aria-label="Servizio precedente"><svg viewBox="0 0 18 18"><path d="M11 3 5 9l6 6"/></svg></button><button class="icon-btn" type="button" data-dir="1" aria-label="Servizio successivo"><svg viewBox="0 0 18 18"><path d="m7 3 6 6-6 6"/></svg></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · LA SQUADRA -->
+<section class="nos pelle wrap" id="nos" data-cap="La squadra">
+  <div class="inner">
+    <div class="head">
+      <span class="label"><b>05</b>NOS Project Team, dal 2022</span>
+      <h2 class="display heat" data-heat>La prima rete d’impresa delle Marche dedicata alla <em>suola.</em></h2>
+      <p>Anche nel nome c’è la parola team. Squadra, perché nessuno vince da solo. A Del Papa e Da.Mi, due pilastri della produzione di suole, si è aggiunto un terzo attore: Top Model, lo studio creativo e tecnico che trasforma le idee in progetti concreti. Il cerchio si chiude: progettazione, stile e produzione dialogano costantemente, e io trasferisco questi strumenti nelle mani dei clienti.</p>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="track" id="marquee-track">
+    <span><b>Top Model</b><i>✕</i></span><span><b>Suolificio Del Papa</b><i>✕</i></span><span><b>Suolificio Da.Mi</b><i>✕</i></span><span>NOS Project Team<i>✕</i></span>
+    <span><b>Top Model</b><i>✕</i></span><span><b>Suolificio Del Papa</b><i>✕</i></span><span><b>Suolificio Da.Mi</b><i>✕</i></span><span>NOS Project Team<i>✕</i></span>
+  </div></div>
+  <div class="inner">
+    <div class="trio">
+      <div><span class="label hot">Design e progettazione</span><h3>Top Model</h3><p>Lo studio che disegna le idee dei clienti.</p></div>
+      <div><span class="label hot">Suole in cuoio + tecnico</span><h3>Del Papa</h3><p>L’azienda che seguo da più di 20 anni.</p></div>
+      <div><span class="label hot">Stampaggio tecnico + D‑LAB</span><h3>Da.Mi</h3><p>Terza generazione, prototipazione 3D.</p></div>
+    </div>
+    <div class="schede" role="tablist" aria-label="I partner" data-i="0">
+      <span class="ind" aria-hidden="true"></span>
+      <button type="button" role="tab" id="tab-dp" aria-controls="az-dp" aria-selected="true">Del Papa</button>
+      <button type="button" role="tab" id="tab-dm" aria-controls="az-dm" aria-selected="false" tabindex="-1">Da.Mi</button>
+    </div>
+    <div class="aziende" id="partner">
+      <article class="azienda" id="az-dp" role="tabpanel" aria-labelledby="tab-dp">
+        <h3>Suolificio Del Papa</h3>
+        <p class="claim">Anima artigianale, organizzazione industriale.</p>
+        <p>Seguo questa azienda da più di 20 anni: oggi è un riferimento per la produzione di suole uomo e donna. Il partner giusto per suole in cuoio artigianali, flessibili e di grande valore.</p>
+        <ul><li>Suole in cuoio artigianali, uomo e donna</li><li>Stampaggio interno di TPU ed EVA con i migliori materiali leggeri e sostenibili sul mercato</li><li>Modelleria interna: prototipazione attenta di suole e stampi</li><li>Ufficio costi: quantifica il prototipo e suggerisce industrializzazioni più convenienti</li></ul>
+        <a class="btn" href="https://delpapa.com" target="_blank" rel="noopener">delpapa.com</a>
+      </article>
+      <article class="azienda" id="az-dm" role="tabpanel" aria-labelledby="tab-dm">
+        <h3>Suolificio Da.Mi</h3>
+        <p class="claim">Una lunga storia di famiglia, alla terza generazione.</p>
+        <p>Una struttura al servizio dei produttori di calzature che pretendono servizio, qualità e un prezzo studiato con il cliente, per affrontare le sfide che il mercato richiede.</p>
+        <ul><li>Stampaggio di materiali tecnici: TPS, TPU, EVA</li><li>Nuovo impianto E‑TPU SUPERFOAM</li><li>D‑LAB: stampanti 3D di ultima generazione, suole e prototipi on-demand su qualsiasi taglia e colore</li><li>Ufficio R&amp;S presente alle fiere di settore per materiali innovativi e sostenibili</li></ul>
+        <a class="btn" href="https://dami.it" target="_blank" rel="noopener">dami.it</a>
+      </article>
+    </div>
+    <div class="teamslot">
+      <div>
+        <span class="label hot">Foto reale del team · in arrivo</span>
+        <p>Dietro queste storie ci sono volti e persone. Il nostro team: un vantaggio solo per te.</p>
+        <p>Da sinistra: Gianluca Tiberi (Top Model), Paolo Pallotta (Da.Mi), Gianluca Petrelli (Del Papa), Elisabetta Pieragostini (Da.Mi), Andrea Vittori (Top Model), Mauro Testatonda, Massimo Petrelli (Del Papa).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · GARANZIE -->
+<section class="garanzie pelle wrap" id="garanzie" data-cap="Garanzie">
+  <div class="inner">
+    <span class="label"><b>06</b>Garanzie</span>
+    <h2 class="display heat" data-heat>Le paure le conosco. Le tolgo dal <em>tavolo.</em></h2>
+    <div class="g4">
+      <article class="open"><h3><button class="acc-btn" type="button" aria-expanded="true" aria-controls="g-1" id="gb-1">Riservatezza assoluta<svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v16M3 11h16"/></svg></button></h3><div class="acc-panel" id="g-1" role="region" aria-labelledby="gb-1"><p>Gestire i progetti personalizzati dei miei clienti significa proteggere il loro capitale creativo: ogni disegno, campione o file è trattato con il massimo rigore, per garantire l’esclusività del tuo design.</p><p class="mech">Nessun nome di cliente su questo sito, nemmeno sotto forma di logo. La discrezione si dimostra, non si dichiara.</p></div></article>
+      <article><h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="g-2" id="gb-2">Made in Italy etico<svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v16M3 11h16"/></svg></button></h3><div class="acc-panel" id="g-2" role="region" aria-labelledby="gb-2"><p>Per noi il Made in Italy non è un timbro su una suola: è la certezza che ogni passaggio produttivo avvenga nel rispetto delle leggi, delle persone e della maestria artigiana.</p><p class="mech">Garantiamo il talento delle maestranze per dare ai tuoi prodotti un’anima autentica.</p></div></article>
+      <article><h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="g-3" id="gb-3">Tracciabilità di filiera<svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v16M3 11h16"/></svg></button></h3><div class="acc-panel" id="g-3" role="region" aria-labelledby="gb-3"><p>Una filiera corta, radicata nelle Marche, fatta di aziende che frequento di persona, reparto per reparto: la qualità cammina di pari passo con la dignità del lavoro.</p><p class="mech">Progettazione, stile e produzione dialogano nello stesso territorio, dentro la rete NOS.</p></div></article>
+      <article><h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="g-4" id="gb-4">Affidabilità nei tempi<svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v16M3 11h16"/></svg></button></h3><div class="acc-panel" id="g-4" role="region" aria-labelledby="gb-4"><p>Le criticità si affrontano in squadra prima della produzione, non si scoprono dopo.</p><p class="mech">I tempi si concordano all’inizio, con chi produce davvero.</p></div></article>
+    </div>
+  </div>
+</section>
+<section class="dignita" data-scena aria-label="Senza dignità non c’è qualità">
+  <img src="img/cucitura.webp" alt="" loading="lazy" width="1680" height="938" data-reveal="scale">
+  <p class="display heat" data-heat>Senza dignità non c’è <em>qualità.</em></p>
+</section>
+<section class="caso pelle wrap" id="case-history">
+  <div class="inner grid">
+    <div>
+      <span class="label">Case history</span>
+      <h2 class="display heat" data-heat>L’unico progetto che posso <em>mostrare.</em></h2>
+      <p>I progetti dei brand restano nei loro archivi, non nel mio sito: la riservatezza viene prima della vetrina. Questa è l’eccezione che posso raccontare.</p>
+      <p>Uno stivale in esemplare unico. La storia completa, con foto, disegni e scelte tecniche, arriverà qui appena avrò l’autorizzazione definitiva a raccontarla per intero.</p>
+      <a class="btn" href="#contatti" style="margin-top:10px">Vuoi un progetto su misura?</a>
+    </div>
+    <div class="embargo" data-reveal>
+      <img src="img/s-04-soft.webp" alt="" loading="lazy" width="200" height="111">
+      <div class="stamp"><div><b>Sotto riservatezza</b><p>Fotografie in attesa di autorizzazione del cliente. La stessa tutela che protegge i tuoi prototipi.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · STORIE DI SCARPE -->
+<section class="blog pelle wrap" id="blog" data-cap="Storie di Scarpe">
+  <div class="inner">
+    <div class="head">
+      <div><span class="label"><b>07</b>Storie di Scarpe</span><h2 class="display heat" data-heat>Trend e innovazione, tra passato e <em>futuro.</em></h2></div>
+      <p>Ogni quindici giorni scrivo un’opinione o un’analisi dal banco di lavoro: una suola tecnica appena nata, una suola d’archivio di vent’anni fa, le voci della filiera.</p>
+    </div>
+    <ul class="articoli" id="articoli">
+      <li><a href="#blog" data-preview="img/suola-etpu.webp"><img class="thumb" src="img/suola-etpu.webp" alt="" loading="lazy" width="1680" height="938"><span class="pil">Anatomia del sapere</span><h3>Cuoio, TPU, EVA o E‑TPU? Quello che una scheda materiali non ti dice</h3><span class="go">Leggi <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a></li>
+      <li><a href="#blog" data-preview="img/schizzo.webp"><img class="thumb" src="img/schizzo.webp" alt="" loading="lazy" width="900" height="1613" style="object-position:50% 40%"><span class="pil">Memorie di fabbrica</span><h3>La modelleria: il reparto che non vedrete mai in una brochure</h3><span class="go">Leggi <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a></li>
+      <li><a href="#blog" data-preview="img/s-02.webp"><img class="thumb" src="img/s-02.webp" alt="" loading="lazy" width="1680" height="938"><span class="pil">Conversazioni da filiera</span><h3>Alta gamma su, mass market giù: cosa significa per chi compra suole</h3><span class="go">Leggi <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a></li>
+    </ul>
+  </div>
+  <div class="preview" id="preview" aria-hidden="true"><img alt="" width="1680" height="938"></div>
+</section>
+
+<!-- 09 · PARLIAMONE -->
+<section class="finale wrap" id="contatti" data-cap="Parliamone" data-scena>
+  <img class="soft" src="img/mani-soft.webp" alt="" aria-hidden="true" width="200" height="111">
+  <img class="bg" id="fin-bg" src="img/mani.webp" alt="" loading="lazy" width="1680" height="938">
+  <div class="bg-fade" aria-hidden="true"></div>
+  <div class="inner copy">
+    <span class="label"><b>08</b>Sei pronto a fare squadra?</span>
+    <h2 class="display heat" data-heat>Parliamone<em>.</em></h2>
+    <p class="intro" data-split>Prenota una visita o una consulenza tecnica: valutiamo insieme il tuo progetto. Rispondo io, non un ufficio.</p>
+  </div>
+</section>
+<section class="contatti pelle wrap" aria-label="Scrivimi">
+  <div class="inner">
+    <div class="quick">
+      <a href="https://wa.me/393473622388" target="_blank" rel="noopener"><span>WhatsApp</span><b>347 3622388</b></a>
+      <a href="#form"><span>Scrivimi</span><b>Il modulo</b></a>
+    </div>
+    <div class="biglietto">
+      <div><span class="label hot">In fiera o in trasferta</span><p class="display">Salva il mio contatto in rubrica, con un tocco.</p></div>
+      <div class="row"><a class="btn solid" href="mauro-testatonda.vcf">Salva in rubrica</a><a class="btn" href="https://wa.me/393473622388" target="_blank" rel="noopener">Scrivimi su WhatsApp</a></div>
+    </div>
+    <div class="grid">
+      <form id="form" novalidate>
+        <div class="field"><label for="f-nome">Nome e azienda</label><input id="f-nome" name="nome" placeholder="Es. Laura Rossi, Calzaturificio…" autocomplete="name" required aria-describedby="e-nome"><span class="err" id="e-nome" aria-live="polite"></span></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" inputmode="email" placeholder="nome@azienda.it" autocomplete="email" required aria-describedby="e-email"><span class="err" id="e-email" aria-live="polite"></span></div>
+        <div class="field"><label for="f-msg">Il tuo progetto</label><textarea id="f-msg" name="msg" placeholder="Raccontami cosa hai in mente: tipo di suola, materiali, tempi…"></textarea></div>
+        <div class="row"><button class="btn solid" type="submit" id="f-send">Prenota una consulenza</button></div>
+        <p class="note">I tuoi dati servono solo a risponderti. Nessuna newsletter, nessuna cessione a terzi.</p>
+        <div class="ok" id="ok" hidden tabindex="-1"><p>Il messaggio è pronto. Scegli come mandarmelo:</p><div class="row"><a class="btn solid" id="ok-mail" href="mailto:mauro.testatonda@gmail.com">Invia via email</a><a class="btn" id="ok-wa" href="https://wa.me/393473622388" target="_blank" rel="noopener">Invia su WhatsApp</a></div></div>
+      </form>
+      <div class="diretto">
+        <div class="item"><span class="label">WhatsApp · il canale più rapido in fiera e in trasferta</span><div class="val" id="v-tel">347 3622388</div><button class="copy-btn" type="button" data-copy="v-tel"><span class="draw">Copia numero</span></button></div>
+        <div class="item"><span class="label">Email</span><div class="val" id="v-mail">mauro.testatonda@gmail.com</div><button class="copy-btn" type="button" data-copy="v-mail"><span class="draw">Copia email</span></button></div>
+        <div class="item"><span class="label">Area operativa</span><div class="val" style="font-size:1.4rem">Distretto calzaturiero Fermano‑Maceratese, Marche</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <div class="inner grid">
+    <div>
+      <div class="wm">Mauro Testatonda</div>
+      <p class="small">Le immagini di questo sito sono realizzate con l’intelligenza artificiale. · Anteprima riservata, ottobre 2026.</p>
+    </div>
+    <nav aria-label="Link"><a href="https://delpapa.com" target="_blank" rel="noopener">Del Papa</a><a href="https://dami.it" target="_blank" rel="noopener">Da.Mi</a><span>Privacy policy · in arrivo</span><a href="#top">Torna su</a></nav>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const LATE = performance.now() > 780; /* JS arrivato dopo il sipario CSS: niente intro che nasconde ciò che è già visibile */
+  const mobile = matchMedia('(max-width: 900px)');
+  const fine = matchMedia('(hover: hover) and (pointer: fine)');
+  const G = window.gsap, ST = window.ScrollTrigger;
+  const motion = !reduce && !!(G && ST);
+  const ease = { out: 'expo.out', inOut: 'expo.inOut', soft: 'power3.out' };
+  const later = (sec, f) => G ? G.delayedCall(sec, f) : setTimeout(f, sec * 1000);
+  /* marchio a fuoco: il numero si scalda e poi si raffredda (solo opacità del bagliore) */
+  const brand = el => { if (!motion || !el) return; el.classList.add('hot'); later(.45, () => el.classList.remove('hot')); };
+  if (!motion) { root.classList.remove('motion'); const L = $('#loader'); if (L) L.hidden = true; }
+
+  /* ═══ un solo orologio: Lenis sul ticker di GSAP, un feed di scroll per tutti ═══ */
+  const S = { y: scrollY, v: 0, p: 0 }; const feed = new Set();
+  const onScroll = fn => { feed.add(fn); return () => feed.delete(fn); };
+  const emit = () => feed.forEach(f => f(S));
+  let lenis = null;
+  if (motion) {
+    G.registerPlugin(ST); if (window.SplitText) G.registerPlugin(SplitText);
+    root.classList.add('forgia');
+    try {
+      lenis = new Lenis({ lerp: .1, touchMultiplier: 1.2 });
+      lenis.on('scroll', l => { S.y = l.scroll; S.v = l.velocity; S.p = l.limit > 0 ? l.scroll / l.limit : 0; ST.update(); emit(); });
+      G.ticker.add(t => lenis && lenis.raf(t * 1000)); G.ticker.lagSmoothing(0);
+    } catch (e) { lenis = null; }
+  }
+  if (!lenis) addEventListener('scroll', () => { const max = document.documentElement.scrollHeight - innerHeight; S.v = scrollY - S.y; S.y = scrollY; S.p = max > 0 ? scrollY / max : 0; emit(); }, { passive: true });
+  const capOf = el => { const own = el.closest('[data-cap]'); if (own) return own; const y = el.getBoundingClientRect().top; let c = caps[0]; caps.forEach(k => { if (k.getBoundingClientRect().top <= y + 4) c = k; }); return c; };
+  let inScena = false;
+  function cambioScena(el, before) {
+    if (inScena) return; inScena = true;
+    const sip = $('#sipario'), c = capOf(el), i = caps.indexOf(c), parts = $$('.n, .t, .s', sip);
+    $('.n', sip).textContent = String(i + 1).padStart(2, '0'); $('.t', sip).textContent = c.dataset.cap; $('.s', sip).textContent = (STRATI[i] || [''])[0];
+    G.timeline({ onComplete: () => { inScena = false; } })
+      .set(sip, { display: 'grid', autoAlpha: 1, clipPath: 'inset(100% 0% 0% 0%)' })
+      .to(sip, { clipPath: 'inset(0% 0% 0% 0%)', duration: .55, ease: ease.inOut })
+      .fromTo(parts, { y: 26, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .55, ease: ease.out, stagger: .05 }, .26)
+      .add(() => { before(); brand($('.n', sip)); if (lenis) lenis.scrollTo(el, { immediate: true, force: true }); else el.scrollIntoView(); ST.update(); }, .58)
+      .to(parts, { y: -18, autoAlpha: 0, duration: .35, ease: ease.soft, stagger: .03 }, 1)
+      .to(sip, { clipPath: 'inset(0% 0% 100% 0%)', duration: .62, ease: ease.inOut }, 1.04)
+      .set(sip, { autoAlpha: 0, display: 'none' });
+  }
+  const scrollToEl = el => { if (lenis) lenis.scrollTo(el, { duration: 1.4, easing: t => 1 - Math.pow(1 - t, 4) }); else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); };
+
+  /* ═══ capitoli: indice, barra, avanzamento ═══ */
+  const caps = $$('[data-cap]');
+  const sott = ['Il regista e la promessa', 'Tre fari', 'Dall’idea alla produzione', 'Cinque servizi', 'NOS Project Team e partner', 'Quattro impegni', 'Il blog', 'Contatti'];
+  /* spaccato di una suola, vista laterale (punta a sinistra): dall'alto la forma, poi gli strati fino al sopratacco */
+  const STRATI = [
+    ['Forma', '<path d="M8,28 C8,24 14,22 28,21 C70,18 112,13 150,6 C170,2.5 196,1.5 214,3 C229,4.5 235,10 235,18 C190,18 165,22 140,24.6 C110,26 40,27 12,28.4 C10,28.4 8,28.4 8,28 Z"/><circle class="dot" cx="205" cy="8" r="2.2"/>'],
+    ['Sottopiede', '<path d="M8,24 C40,23 110,23 140,22 C165,20 190,16 232,16 L232,19.5 C190,19.5 165,23.5 140,25.5 C110,26.5 40,26.5 8,27.5 Z"/>'],
+    ['Guardolo', '<path d="M7,22.5 C40,21.5 110,21.5 140,20.5 C152,19.8 162,19 172,18 L172,21.6 C162,22.6 152,23.4 140,24.1 C110,25.1 40,25.1 7,26.1 Z"/><path class="st" d="M14,24.2 C50,23.4 110,23.4 140,22.4 C152,21.8 160,21.2 166,20.6"/>'],
+    ['Intersuola', '<path d="M6,21 C40,20 110,20 140,19 C165,17 190,13 234,13 L234,18.5 C190,18.5 165,22.5 140,24.6 C110,25.8 40,25.8 6,26.8 Z"/>'],
+    ['Suola', '<path d="M4,19 C30,18 110,18 140,17 C165,15 190,11 236,11 L236,17 C190,17 165,22 140,24.2 C110,26 30,26 9,26 C5,25 4,22 4,19 Z"/><path class="st" d="M10,21 C40,20.4 110,20.4 140,19.6 C165,17.8 190,14 230,14"/>'],
+    ['Battistrada', '<path d="M5,23 C30,22.4 110,22.4 140,21.6 C165,19.8 190,16 235,16 L235,19.4 C190,19.4 165,23.2 140,25 C110,25.8 30,25.8 7,26.2 C5.4,25.4 5,24.4 5,23 Z"/><path class="ln" d="M20,28.5 L20,30.5 M34,28.4 L34,30.4 M48,28.3 L48,30.3 M62,28.2 L62,30.2 M76,28.1 L76,30.1 M90,28 L90,30 M104,27.9 L104,29.9 M118,27.7 L118,29.7"/>'],
+    ['Tacco', '<path d="M182,9 L235,9 L233,37 L190,37 C187.5,30 184.5,19 182,9 Z"/><path class="ln" d="M185,18.5 L234.4,18.5 M187.6,28 L233.7,28"/>'],
+    ['Sopratacco', '<path d="M189,20 L233,20 L232.6,25.5 L190.4,25.5 Z"/><circle class="dot" cx="199" cy="22.8" r="1.1"/><circle class="dot" cx="211" cy="22.8" r="1.1"/><circle class="dot" cx="223" cy="22.8" r="1.1"/>']
+  ];
+  const indice = $('#indice'), segsBox = $('#cap-segs');
+  caps.forEach((c, i) => {
+    const a = document.createElement('a'); a.href = '#' + c.id;
+    const [term, svg] = STRATI[i] || ['', ''];
+    a.innerHTML = `<span class="layer" aria-hidden="true"><svg viewBox="0 8 240 30" focusable="false">${svg}</svg></span><span class="n marchio">${String(i + 1).padStart(2, '0')}</span><span class="tx"><span class="t"><span class="draw">${c.dataset.cap}</span></span><small><i aria-hidden="true">${term}</i><span class="sub"> · ${sott[i] || ''}</span></small></span>`;
+    indice.appendChild(a); const b = document.createElement('b'); b.innerHTML = '<i></i>'; segsBox.appendChild(b);
+  });
+  const segFill = $$('#cap-segs b i'), links = $$('#indice a');
+  const capNum = $('#cap-num'), capNome = $('#cap-nome'), capBox = $('#capitoli'), prog = $('#prog'), dot = $('#prog-dot');
+  let curCap = -1, tops = [], docH = 0, lastY = 0, backCall = null;
+  const measure = () => { tops = caps.map(c => c.getBoundingClientRect().top + (lenis ? lenis.scroll : scrollY)); docH = document.documentElement.scrollHeight; };
+  const scene = $$('[data-scena]');
+  const sopraScena = y0 => scene.some(el => { const r = el.getBoundingClientRect(); return r.top <= y0 && r.bottom > y0; });
+  function chapters({ y }) {
+    const H = docH - innerHeight, p = H > 0 ? Math.min(1, y / H) : 0;
+    prog.style.transform = `scaleX(${p})`; dot.style.transform = `translateX(${p * prog.parentElement.clientWidth}px)`;
+    const yy = y + innerHeight * .4; let k = 0; tops.forEach((t, i) => { if (yy >= t) k = i; });
+    const axis = mobile.matches ? 'scaleX' : 'scaleY';
+    tops.forEach((t, i) => { const end = tops[i + 1] || docH; const q = Math.min(1, Math.max(0, (yy - t) / (end - t))); segFill[i].style.transform = `${axis}(${i < k ? 1 : i === k ? q : 0})`; });
+    if (k !== curCap) {
+      curCap = k; capNum.textContent = String(k + 1).padStart(2, '0'); capNome.textContent = caps[k].dataset.cap; brand(capNum);
+      capBox.classList.toggle('at-contact', caps[k].id === 'contatti' || !!caps[k].querySelector('#contatti'));
+      links.forEach((l, i) => l.setAttribute('aria-current', i === k));
+      if (!mobile.matches) { capBox.classList.add('flash'); clearTimeout(capBox._t); capBox._t = setTimeout(() => capBox.classList.remove('flash'), 1600); }
+    }
+    capBox.classList.toggle('at-start', y < innerHeight * .7); /* il CTA del hero è già lì */
+    if (root.dataset.theme === 'light') { root.classList.toggle('nav-dark', sopraScena(34)); root.classList.toggle('cap-dark', !mobile.matches && sopraScena(innerHeight / 2)); }
+    /* la cornice (nav, barra del telefono) si fa da parte scendendo e torna quando ti fermi o risali */
+    if (Math.abs(y - lastY) > 4) { const down = y > 160 && y > lastY; root.classList.toggle('frame-away', down); if (down) root.classList.add('nav-away'); else root.classList.remove('nav-away'); lastY = y; }
+    if (motion) { backCall && backCall.kill(); backCall = G.delayedCall(.45, () => root.classList.remove('frame-away')); }
+  }
+  onScroll(chapters);
+  const remeasure = () => { measure(); chapters(S); };
+  addEventListener('resize', remeasure); addEventListener('load', remeasure); remeasure();
+
+  /* ═══ menu: si apre come un sipario, focus intrappolato, Esc chiude ═══ */
+  const menu = $('#menu'); let opener = null;
+  const focusables = () => $$('a,button', menu);
+  const setMenu = open => {
+    $$('[aria-controls="menu"]').forEach(b => b.setAttribute('aria-expanded', open));
+    if (open) {
+      opener = document.activeElement; menu.hidden = false; lenis && lenis.stop();
+      if (motion) { G.fromTo(menu, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .8, ease: ease.inOut }); const ls = $$('#indice .layer'), rowH = links[0] ? links[0].offsetHeight : 60, mid = (ls.length - 1) / 2;
+        G.fromTo(ls, { y: i => (mid - i) * rowH * .92, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.15, ease: ease.out, stagger: { each: .035, from: 'center' }, delay: .3, overwrite: true });
+        G.fromTo($$('#indice .n, #indice .tx, #menu .head, #menu .foot'), { x: -14, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: .8, ease: ease.out, stagger: .03, delay: .55, overwrite: true }); }
+      (links[curCap] || links[0]).focus({ preventScroll: true }); later(1.05, () => brand($('.n', links[curCap] || links[0])));
+    } else {
+      const done = () => { menu.hidden = true; lenis && lenis.start(); opener && opener.focus && opener.focus({ preventScroll: true }); };
+      if (motion) G.to(menu, { clipPath: 'inset(100% 0% 0% 0%)', duration: .6, ease: ease.inOut, onComplete: done }); else done();
+    }
+  };
+  $('#apri-menu').addEventListener('click', () => setMenu(true));
+  $('#cap-apri').addEventListener('click', () => setMenu(true));
+  $('#chiudi-menu').addEventListener('click', () => setMenu(false));
+  menu.addEventListener('keydown', e => {
+    if (e.key === 'Escape') setMenu(false);
+    if (e.key === 'Tab') { const f = focusables(), first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
+  });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a) return;
+    const id = a.getAttribute('href'); const el = id.length > 1 && $(id); if (!el) return;
+    e.preventDefault();
+    const closeMenu = () => { if (!menu.hidden) { menu.hidden = true; lenis && lenis.start(); $$('[aria-controls="menu"]').forEach(b => b.setAttribute('aria-expanded', false)); } };
+    if (motion && Math.abs(el.getBoundingClientRect().top) > innerHeight * 1.6) cambioScena(el, closeMenu); else { closeMenu(); scrollToEl(el); }
+  });
+
+  /* ═══ il calore dei titoli: grigio → arancio metallo → bianco ═══ */
+  const PAL = { dark: { dim: [126, 121, 113], ember: [224, 97, 47], bone: [240, 238, 232] }, light: { dim: [140, 132, 121], ember: [169, 59, 19], bone: [26, 23, 20] } };
+  const SCENA = '[data-scena], .striscia, .embargo';
+  const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
+  const heatColor = (t, C) => t < .5 ? mix(C.dim, C.ember, t / .5) : mix(C.ember, C.bone, (t - .5) / .5);
+  const painted = new Set();
+  function split(el) {
+    const sr = document.createElement('span'); sr.className = 'sr'; sr.textContent = el.textContent.replace(/\s+/g, ' ').trim();
+    const vis = document.createElement('span'); vis.setAttribute('aria-hidden', 'true');
+    const walk = (node, into) => node.childNodes.forEach(n => {
+      if (n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(part => {
+        if (!part) return; if (/^\s+$/.test(part)) { into.appendChild(document.createTextNode(' ')); return; }
+        const w = document.createElement('span'); w.className = 'w';
+        [...part].forEach(ch => { const c = document.createElement('span'); c.className = 'c'; c.textContent = ch; w.appendChild(c); });
+        into.appendChild(w);
+      });
+      else if (n.nodeType === 1) { const cl = n.cloneNode(false); into.appendChild(cl); walk(n, cl); }
+    });
+    walk(el, vis); el.textContent = ''; el.append(sr, vis); el._chars = $$('.c', vis);
+  }
+  function paint(el, p) {
+    el._p = p; painted.add(el);
+    const C = root.dataset.theme === 'light' && !el.closest(SCENA) ? PAL.light : PAL.dark;
+    const ch = el._chars || [], n = ch.length, spread = Math.max(5, n * .18);
+    for (let i = 0; i < n; i++) {
+      const t = Math.min(1, Math.max(0, (p * (n + spread) - i) / spread));
+      const [r, g, b] = heatColor(t, C); ch[i].style.color = `rgb(${r},${g},${b})`;
+      const glow = t > 0 && t < 1 ? Math.sin(t * Math.PI) : 0;
+      ch[i].style.textShadow = glow > .05 ? `0 0 ${18 * glow}px rgba(224,97,47,${.55 * glow})` : 'none';
+    }
+  }
+  const flash = (el, dur = .6) => { if (!motion) return; if (!el._chars) split(el); const o = { p: 0 }; paint(el, 0); return G.to(o, { p: 1, duration: dur, ease: ease.soft, onUpdate: () => paint(el, o.p) }); };
+
+  /* ═══ luce / buio: la nuova scena si allarga dall'interruttore come una pozza di luce ═══ */
+  const temaBtns = $$('.tema'), metaTheme = document.querySelector('meta[name="theme-color"]');
+  const syncTema = () => {
+    const light = root.dataset.theme === 'light';
+    temaBtns.forEach(b => { b.setAttribute('aria-pressed', light); b.setAttribute('aria-label', light ? 'Buio: spegni la luce, tema scuro' : 'Luce: accendi la luce, tema chiaro'); $('.lbl', b).textContent = light ? 'Buio' : 'Luce'; });
+    if (metaTheme) metaTheme.content = light ? '#F2EDE4' : '#0B0B0A';
+  };
+  const applyTema = t => {
+    root.dataset.theme = t; try { localStorage.setItem('mt-tema', t); } catch (e) {}
+    if (t !== 'light') root.classList.remove('nav-dark', 'cap-dark');
+    syncTema(); painted.forEach(el => paint(el, el._p)); chapters(S);
+  };
+  temaBtns.forEach(b => b.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    if (!motion || !document.startViewTransition) { applyTema(next); return; }
+    const r = b.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2, R = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const vt = document.startViewTransition(() => applyTema(next));
+    vt.ready.then(() => root.animate({ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${R}px at ${x}px ${y}px)`] }, { duration: 900, easing: 'cubic-bezier(.87,0,.13,1)', pseudoElement: '::view-transition-new(root)' })).catch(() => {});
+  }));
+  syncTema();
+
+  /* ═══ caroselli (telefono), schede partner, accordion, modulo ═══ */
+  $$('.carousel-ui').forEach(ui => {
+    const rail = document.getElementById(ui.dataset.for), items = [...rail.children], dots = $('.dots', ui);
+    items.forEach(() => dots.appendChild(document.createElement('b')));
+    const ds = [...dots.children], [prev, next] = $$('.icon-btn', ui);
+    const idx = () => { const base = items[0].offsetLeft; let best = 0, bd = 1e9; items.forEach((it, i) => { const d = Math.abs(it.offsetLeft - base - rail.scrollLeft); if (d < bd) { bd = d; best = i; } }); return best; };
+    const upd = () => { const i = idx(); ds.forEach((d, k) => d.classList.toggle('on', k === i)); prev.disabled = i === 0; next.disabled = i === items.length - 1; };
+    rail.addEventListener('scroll', upd, { passive: true });
+    $$('.icon-btn', ui).forEach(b => b.addEventListener('click', () => { const i = Math.min(items.length - 1, Math.max(0, idx() + +b.dataset.dir)); rail.scrollTo({ left: items[i].offsetLeft - items[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' }); }));
+    upd();
+  });
+  const schede = $('.schede'), tabs = $$('.schede [role=tab]'), panels = $$('.azienda');
+  const selTab = (i, anim) => {
+    tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; }); schede.dataset.i = i;
+    panels.forEach((p, k) => p.hidden = mobile.matches && k !== i);
+    if (anim && motion && mobile.matches) G.from(panels[i].children, { y: 12, autoAlpha: 0, duration: .5, ease: ease.soft, stagger: .04 });
+  };
+  tabs.forEach((t, i) => { t.addEventListener('click', () => selTab(i, true)); t.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const n = (i + 1) % 2; selTab(n, true); tabs[n].focus(); } }); });
+  const accBtns = $$('.g4 .acc-btn');
+  const accMode = () => {
+    const on = matchMedia('(max-width: 800px)').matches;
+    accBtns.forEach(b => { const art = b.closest('article'), panel = $('#' + b.getAttribute('aria-controls')); panel.hidden = on && !art.classList.contains('open'); if (on) { b.disabled = false; b.setAttribute('aria-expanded', art.classList.contains('open')); } else { b.disabled = true; b.removeAttribute('aria-expanded'); } });
+  };
+  accBtns.forEach(b => b.addEventListener('click', () => {
+    if (!matchMedia('(max-width: 800px)').matches) return;
+    const art = b.closest('article'), panel = $('#' + b.getAttribute('aria-controls')), open = !art.classList.contains('open');
+    art.classList.toggle('open', open); b.setAttribute('aria-expanded', open); panel.hidden = !open;
+    if (open && motion) G.from(panel.children, { y: 10, autoAlpha: 0, duration: .45, ease: ease.soft, stagger: .05 });
+    remeasure();
+  }));
+  const modes = () => { root.classList.toggle('tabbed', mobile.matches); selTab(+schede.dataset.i || 0); accMode(); };
+  mobile.addEventListener('change', modes); addEventListener('resize', accMode); modes();
+  $('#form').addEventListener('submit', e => {
+    e.preventDefault();
+    const nome = $('#f-nome'), mail = $('#f-email');
+    $('#e-nome').textContent = nome.value.trim() ? '' : 'Scrivi il tuo nome e l’azienda.';
+    $('#e-email').textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim()) ? '' : 'Serve un’email valida, per esempio nome@azienda.it.';
+    nome.setAttribute('aria-invalid', !!$('#e-nome').textContent); mail.setAttribute('aria-invalid', !!$('#e-email').textContent);
+    if ($('#e-nome').textContent || $('#e-email').textContent) { (nome.value.trim() ? mail : nome).focus(); return; }
+    const testo = `Nome e azienda: ${nome.value.trim()}\nEmail: ${mail.value.trim()}\n\n${$('#f-msg').value.trim() || 'Vorrei parlare di un progetto.'}`;
+    $('#ok-mail').href = 'mailto:mauro.testatonda@gmail.com?subject=' + encodeURIComponent('Richiesta dal sito: ' + nome.value.trim()) + '&body=' + encodeURIComponent(testo);
+    $('#ok-wa').href = 'https://wa.me/393473622388?text=' + encodeURIComponent(testo);
+    $('#ok').hidden = false; $('#ok').focus({ preventScroll: true });
+  });
+  $$('[data-copy]').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById(b.dataset.copy), txt = el.textContent.trim(), lab = b.querySelector('.draw') || b, old = lab.textContent;
+    const sel = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); lab.textContent = 'Selezionato'; later(1.6, () => lab.textContent = old); };
+    try { navigator.clipboard.writeText(txt).then(() => { lab.textContent = 'Copiato'; later(1.6, () => lab.textContent = old); }, sel); } catch (_) { sel(); }
+  }));
+
+  /* ═══ bottoni: il calore entra dal lato del puntatore ═══ */
+  const ARR = { right: '<path d="M2 8h11M9 4l4 4-4 4"/>', up: '<path d="M4 12L12 4M5.5 4H12v6.5"/>', down: '<path d="M8 2v11M4 9l4 4 4-4"/>' };
+  $$('.btn').forEach(btn => {
+    const txt = btn.textContent.trim();
+    const kind = btn.matches('[href$=".vcf"]') ? 'down' : btn.matches('[target="_blank"]') ? 'up' : 'right';
+    const lbl = `<span class="lbl"><span class="a">${txt}</span><span class="b" aria-hidden="true">${txt}</span></span>`;
+    btn.innerHTML = `<span class="fill" aria-hidden="true"></span>${lbl}` + (btn.tagName === 'A' ? `<svg class="arr ${kind === 'right' ? '' : kind}" viewBox="0 0 16 16" aria-hidden="true" focusable="false">${ARR[kind]}</svg>` : '');
+  });
+  if (motion && fine.matches) $$('.btn').forEach(btn => {
+    const fill = $('.fill', btn); let closed = true;
+    const at = e => { const r = btn.getBoundingClientRect(); return `${e.clientX - r.left}px ${e.clientY - r.top}px`; };
+    const open = p => { if (closed) G.set(fill, { clipPath: `circle(0% at ${p})` }); closed = false; btn.classList.add('is-filled'); G.to(fill, { clipPath: `circle(150% at ${p})`, duration: .6, ease: ease.soft, overwrite: true }); };
+    const close = p => { btn.classList.remove('is-filled'); G.to(fill, { clipPath: `circle(0% at ${p})`, duration: .5, ease: ease.soft, overwrite: true, onComplete: () => { closed = true; } }); };
+    btn.addEventListener('pointerenter', e => open(at(e))); btn.addEventListener('pointerleave', e => close(at(e)));
+    btn.addEventListener('focus', () => btn.matches(':focus-visible') && open('50% 50%')); btn.addEventListener('blur', () => close('50% 50%'));
+    /* i bottoni pieni si lasciano attirare di qualche pixel dal puntatore */
+    if (btn.classList.contains('solid') && !btn.classList.contains('go')) {
+      const mx = G.quickTo(btn, 'x', { duration: .6, ease: ease.out }), my = G.quickTo(btn, 'y', { duration: .6, ease: ease.out });
+      btn.addEventListener('pointermove', e => { const r = btn.getBoundingClientRect(); mx(G.utils.clamp(-6, 6, (e.clientX - r.left - r.width / 2) * .12)); my(G.utils.clamp(-4, 4, (e.clientY - r.top - r.height / 2) * .2)); });
+      btn.addEventListener('pointerleave', () => { mx(0); my(0); });
+    }
+  });
+
+  /* ═══ blog: anteprima che segue il puntatore (desktop) ═══ */
+  const box = $('#preview');
+  if (motion && fine.matches && box) {
+    const img = $('img', box), qx = G.quickTo(box, 'x', { duration: .6, ease: ease.soft }), qy = G.quickTo(box, 'y', { duration: .6, ease: ease.soft }), qr = G.quickTo(box, 'rotate', { duration: .8, ease: ease.soft });
+    let lx = 0, px = 0, py = 0;
+    const list = $('#articoli');
+    addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; qx(px + 40); qy(py); qr(G.utils.clamp(-10, 10, (px - lx) * .6)); lx = px; }, { passive: true });
+    const show = e => { img.src = e.currentTarget.dataset.preview; G.to(box, { autoAlpha: 1, scale: 1, duration: .5, ease: ease.out }); };
+    const hide = () => G.to(box, { autoAlpha: 0, scale: .85, duration: .4, ease: ease.out });
+    $$('a[data-preview]', list).forEach(a => { a.addEventListener('pointerenter', show); });
+    list.addEventListener('pointerleave', hide);
+    onScroll(() => { if (G.getProperty(box, 'autoAlpha') > 0 && !list.contains(document.elementFromPoint(px, py))) hide(); });
+  }
+
+  if (!motion) return; /* —— da qui in giù solo con movimento —— */
+  $$('.label > b').forEach(b => ST.create({ trigger: b, start: 'top 86%', once: true, onEnter: () => brand(b) }));
+
+  /* ═══ stories (telefono): sul ticker di GSAP, tocco, swipe, pausa ═══ */
+  const PAUSE = '<svg viewBox="0 0 14 14"><rect x="2" y="1" width="3.5" height="12"/><rect x="8.5" y="1" width="3.5" height="12"/></svg>', PLAY = '<svg viewBox="0 0 14 14"><path d="M3 1.5v11l9-5.5z"/></svg>';
+  function story(deck, { interval, onShow }) {
+    const slides = $$('[data-slide]', deck), n = slides.length, segBox = $('.segs-top', deck);
+    segBox.innerHTML = slides.map(() => '<b><i></i></b>').join('');
+    const fills = $$('i', segBox), pausa = $('.pausa', deck), nx = $('.tap.next', deck), pv = $('.tap.prev', deck);
+    let i = Math.max(0, slides.findIndex(s => s.classList.contains('on'))), elapsed = 0, playing = true, visible = false, held = false;
+    const show = (k, dir) => { k = (k + n) % n; if (k === i) return; const from = i; slides[from].classList.remove('on'); slides[k].classList.add('on'); i = k; fills.forEach((f, j) => f.style.transform = `scaleX(${j < k ? 1 : 0})`); elapsed = 0; onShow(k, from, dir); };
+    const tick = (t, dt) => { if (playing && visible && !held) { elapsed += dt; fills[i].style.transform = `scaleX(${Math.min(1, elapsed / interval)})`; if (elapsed >= interval) show(i + 1, 1); } };
+    G.ticker.add(tick);
+    const onN = () => show(i + 1, 1), onP = () => show(i - 1, -1);
+    const onPause = () => { playing = !playing; pausa.setAttribute('aria-pressed', !playing); pausa.setAttribute('aria-label', playing ? 'Metti in pausa' : 'Riprendi'); pausa.innerHTML = playing ? PAUSE : PLAY; };
+    nx.addEventListener('click', onN); pv.addEventListener('click', onP); pausa.addEventListener('click', onPause);
+    let sx = 0, sy = 0;
+    const down = e => { sx = e.clientX; sy = e.clientY; held = true; }, cancel = () => { held = false; };
+    const up = e => { held = false; const dx = e.clientX - sx, dy = e.clientY - sy; if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3 && sx > 24) show(i + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); };
+    deck.addEventListener('pointerdown', down); deck.addEventListener('pointerup', up); deck.addEventListener('pointercancel', cancel);
+    const io = new IntersectionObserver(es => es.forEach(en => { visible = en.intersectionRatio > .55; }), { threshold: [0, .55, 1] }); io.observe(deck);
+    return () => { G.ticker.remove(tick); io.disconnect(); nx.removeEventListener('click', onN); pv.removeEventListener('click', onP); pausa.removeEventListener('click', onPause); deck.removeEventListener('pointerdown', down); deck.removeEventListener('pointerup', up); deck.removeEventListener('pointercancel', cancel); };
+  }
+
+  /* ═══ fari: la card entra dal basso, l'immagine si assesta, il nome si scalda ═══ */
+  const fari = $$('.faro'), fariH = fari.map(f => $('h3', f)), blurs = $$('.fari .blur img');
+  const faroIn = (k, from) => {
+    const f = fari[k], card = $('.card', f), img = $('img', card);
+    if (from != null && blurs[from]) G.to(blurs[from], { autoAlpha: 0, duration: .9, ease: ease.soft, overwrite: true });
+    if (blurs[k]) G.to(blurs[k], { autoAlpha: 1, duration: .9, ease: ease.soft, overwrite: true });
+    G.fromTo(card, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: ease.out, overwrite: true });
+    G.fromTo(img, { scale: 1.18 }, { scale: 1, duration: 1.6, ease: ease.out, overwrite: true });
+    G.fromTo($$('.tx > :not(h3)', f), { y: 22, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, ease: ease.out, stagger: .06, delay: .1, overwrite: true });
+    flash(fariH[k], .9);
+  };
+
+  let stories = [];
+  const storyMode = () => {
+    stories.forEach(d => d()); stories = [];
+    root.classList.toggle('storymode', mobile.matches);
+    if (!mobile.matches) return;
+    stories.push(story($('#fari-deck'), { interval: 6500, onShow: (k, from) => faroIn(k, from) }));
+  };
+  mobile.addEventListener('change', storyMode); storyMode();
+
+  /* ═══ titoli: calore legato allo scroll ═══ */
+  $$('.heat[data-heat], .heat[data-load]').forEach(el => { split(el); paint(el, 0); });
+  const lume = (el, p) => el.style.setProperty('--lume', (p < .5 ? p * 2 : 1 - (p - .5) * 1.2).toFixed(3));
+  $$('.heat[data-heat]').forEach(el => ST.create({ trigger: el, start: 'top 88%', end: 'bottom 50%', scrub: true, onUpdate: s => { paint(el, s.progress); lume(el, s.progress); }, onRefresh: s => { paint(el, s.progress); lume(el, s.progress); } }));
+
+  /* ═══ righe che salgono (solo tre paragrafi) e immagini che si aprono ═══ */
+  const lineIntro = [];
+  if (window.SplitText) {
+    root.classList.add('splitting');
+    $$('[data-split]').forEach(el => {
+      const isIntro = el.hasAttribute('data-intro'); const st = { done: false, tw: null, want: false };
+      SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'split-line', autoSplit: true, onSplit(self) {
+        G.set(el, { visibility: 'visible' }); if (st.done) return; if (isIntro && LATE) { st.done = true; return; }
+        st.tw = G.from(self.lines, { yPercent: 110, rotate: 2, duration: 1.2, ease: ease.out, stagger: .08, paused: isIntro && !st.want, onComplete: () => { st.done = true; },
+          scrollTrigger: isIntro ? undefined : { trigger: el, start: 'top 88%', once: true } });
+        return st.tw;
+      } });
+      if (isIntro) lineIntro.push(() => { st.want = true; st.tw && st.tw.play(); });
+    });
+  }
+  $$('[data-reveal]').forEach((el, i) => {
+    const scale = el.dataset.reveal === 'scale', img = !scale && el.querySelector('img');
+    const tl = G.timeline({ delay: el.classList.contains('striscia') ? (i % 4) * .06 : 0, scrollTrigger: { trigger: scale ? el.parentElement : el, start: 'top 88%', once: true } });
+    tl.fromTo(el, scale ? { clipPath: 'inset(14% 14% 14% 14%)', scale: 1.15 } : { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, duration: scale ? 1.6 : 1.3, ease: ease.out });
+    if (img) tl.fromTo(img, { scale: 1.22 }, { scale: 1, duration: 1.7, ease: ease.out }, 0);
+    if (!scale) { /* il faro passa sull'immagine appena scoperta, una volta */
+      const sw = document.createElement('span'); sw.className = 'sweep'; sw.setAttribute('aria-hidden', 'true'); el.appendChild(sw);
+      tl.fromTo(sw, { xPercent: -120, autoAlpha: 1 }, { xPercent: 120, duration: 1.25, ease: ease.soft }, .4).set(sw, { autoAlpha: 0 });
+    }
+  });
+  G.utils.toArray('.tempi .bar i').forEach((b, i) => G.fromTo(b, { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: ease.out, delay: i * .15, scrollTrigger: { trigger: '#tempi', start: 'top 80%', once: true } }));
+
+  /* ═══ marquee dei partner: accelera con la velocità dello scroll ═══ */
+  const mq = G.to('#marquee-track', { xPercent: -50, ease: 'none', duration: 32, repeat: -1 });
+  onScroll(({ v }) => { const dir = v < 0 ? -1 : 1; G.to(mq, { timeScale: dir * (1 + Math.min(Math.abs(v) / 8, 5)), duration: .4, overwrite: true }); });
+
+  /* ═══ SIGNATURE: l'occhio di bue. Idle + puntatore + scroll, solo transform ═══ */
+  const stage = $('#hero-stage'), heroImg = $('#hero-bg'), torch = $('#torch');
+  const cover = (fx, fy, posX = mobile.matches ? .63 : .68, posY = .5) => {
+    const W = stage.clientWidth, H = stage.clientHeight, iw = heroImg.naturalWidth || 1680, ih = heroImg.naturalHeight || 938;
+    const s = Math.max(W / iw, H / ih), dw = iw * s, dh = ih * s; return { x: (W - dw) * posX + fx * dw, y: (H - dh) * posY + fy * dh };
+  };
+  const SHOE = [.2875, .66], HEAD = [.73, .2];
+  const T = { x: 0, y: 0, s: 1, aimX: 0, aimY: 0, pointer: false, heroP: 0, vy: 0 };
+  const tx = G.quickSetter(torch, 'x', 'px'), ty = G.quickSetter(torch, 'y', 'px'), tsx = G.quickSetter(torch, 'scaleX'), tsy = G.quickSetter(torch, 'scaleY'), ts = v => { tsx(v); tsy(v); };
+  addEventListener('pointermove', e => { if (!fine.matches) return; const r = stage.getBoundingClientRect(); T.aimX = e.clientX - r.left; T.aimY = e.clientY - r.top; T.pointer = true; }, { passive: true });
+  onScroll(({ v }) => { T.vy = G.utils.clamp(-60, 60, v * 2); });
+  const anchor = () => {
+    const shoe = cover(...SHOE), head = cover(...HEAD);
+    if (mobile.matches) return head;
+    const k = Math.min(1, T.heroP * 1.8); return { x: shoe.x + (head.x - shoe.x) * k, y: shoe.y + (head.y - shoe.y) * k };
+  };
+  { const a = anchor(); T.x = a.x; T.y = a.y; tx(a.x); ty(a.y); }
+  const torchTick = (time) => {
+    const r = G.ticker.deltaRatio(), k = 1 - Math.pow(.93, r), a = anchor();
+    const orbitX = Math.cos(time * .45) * 34, orbitY = Math.sin(time * .62) * 18;          /* respira da solo */
+    const pull = T.pointer ? .4 : 0;                                                       /* segue il puntatore, in ritardo */
+    const gx = a.x + (T.aimX - a.x) * pull + orbitX, gy = a.y + (T.aimY - a.y) * pull + orbitY + T.vy;
+    T.vy *= Math.pow(.9, r);
+    T.x += (gx - T.x) * k; T.y += (gy - T.y) * k;
+    const base = mobile.matches ? 1.3 : 1, open = mobile.matches ? 0 : Math.pow(Math.max(0, T.heroP - .25) / .75, 2) * 9;
+    T.s += (base + open - T.s) * (1 - Math.pow(.85, r));
+    tx(T.x); ty(T.y); ts(T.s);
+  };
+  ST.create({ trigger: '.hero', start: 'top bottom', end: 'bottom top', onToggle: s => s.isActive ? G.ticker.add(torchTick) : G.ticker.remove(torchTick) });
+  G.ticker.add(torchTick);
+
+  ST.matchMedia({
+    '(min-width: 901px)': () => {
+      /* hero: la luce trova il regista e si allarga; il titolo lascia la scena */
+      const tlh = G.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true, onUpdate: s => { T.heroP = s.progress; } } });
+      tlh.to('#hero-copy', { autoAlpha: 0, y: -60, ease: 'none', duration: .4 }, .05).to('#cue', { autoAlpha: 0, duration: .1 }, 0).to('#hero-caption', { autoAlpha: 1, duration: .2 }, .7);
+      /* tre fari a scena fissa */
+      let cur = 0; G.set(blurs[0], { autoAlpha: 1 });
+      const stF = ST.create({ trigger: '.fari', start: 'top top', end: 'bottom bottom', onUpdate: s => {
+        const i = Math.min(2, Math.floor(s.progress * 3 * .999)); if (i === cur) return;
+        fari[cur].classList.remove('on'); fari[i].classList.add('on'); const from = cur; cur = i; faroIn(i, from);
+      } });
+      /* parallasse leggera sulle immagini dei servizi */
+      const par = $$('[data-par]').map(img => G.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+      /* finale: le mani sulla suola passano dallo sfocato al nitido (due immagini, niente blur animato) */
+      const fin = G.fromTo('#fin-bg', { autoAlpha: 0, scale: 1.06 }, { autoAlpha: 1, scale: 1, ease: 'none', scrollTrigger: { trigger: '.finale', start: 'top 80%', end: 'top 5%', scrub: true } });
+      return () => { stF.kill(); T.heroP = 0; };
+    },
+    '(max-width: 900px)': () => {
+      const fin = G.fromTo('#fin-bg', { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.4, ease: ease.soft, scrollTrigger: { trigger: '.finale', start: 'top 70%', once: true } });
+    }
+  });
+
+  /* ═══ loader: conta fino a 25 al ritmo del caricamento reale, poi il sipario si alza ═══ */
+  const L = $('#loader'), count = $('.count', L), bar = $('.bar i', L), badge = $('#hero-badge'), panel = $('.panel', L);
+  const h1 = $('[data-load]'), cta = $('#hero-cta');
+  G.set([cta, '#cue'], { autoAlpha: 0, y: 16 });
+  const intro = () => {
+    const o = { p: 0 }; G.to(o, { p: 1, duration: 2.2, ease: 'power2.inOut', onUpdate: () => paint(h1, o.p) });
+    lineIntro.forEach(f => f());
+    G.to(cta, { autoAlpha: 1, y: 0, duration: 1.1, ease: ease.out, delay: .5 }); G.to('#cue', { autoAlpha: 1, y: 0, duration: 1, ease: ease.out, delay: 1.1 });
+  };
+  const fmt = n => n >= 25 ? '25+ anni di esperienza' : n === 1 ? '1 anno di esperienza' : `${n} anni di esperienza`;
+  const place = () => { const r = badge.getBoundingClientRect(); count.style.left = (r.left + r.width / 2) + 'px'; count.style.top = r.top + 'px'; };
+  const tasks = [document.fonts ? document.fonts.ready : Promise.resolve(), heroImg.complete ? Promise.resolve() : heroImg.decode().catch(() => {})];
+  let done = 0, target = 0; tasks.forEach(t => t.then(() => { done++; target = done / tasks.length * 100; }));
+  /* il conteggio parte dalla navigazione: se il JS arriva tardi, il sipario si è già alzato da solo (CSS) */
+  const now = () => performance.now() / 1000;
+  let shown = 0;
+  if (LATE) {
+    G.set([cta, '#cue'], { clearProps: 'all' }); count.textContent = fmt(25);
+    G.delayedCall(Math.max(0, 1.45 - now()), () => { L.hidden = true; root.classList.add('is-loaded'); remeasure(); });
+    const o = { p: 0 }; G.to(o, { p: 1, duration: 1.6, ease: 'power2.inOut', onUpdate: () => paint(h1, o.p) });
+  } else {
+    L.style.animation = 'none'; L.classList.add('counting');
+    const t0 = now();
+    const loadTick = (time, dt) => {
+      const el = now() - t0, cap = Math.min(100, el / .7 * 100), goal = el > .8 ? 100 : Math.min(target, cap);
+      shown += (goal - shown) * (1 - Math.exp(-Math.min(dt, 100) / 1000 * 14)); if (goal === 100 && shown > 97) shown = 100;
+      place(); count.textContent = fmt(Math.round(shown / 100 * 25)); bar.style.transform = `scaleX(${shown / 100})`;
+      if (shown === 100) {
+        G.ticker.remove(loadTick); count.textContent = fmt(25);
+        G.timeline({ onComplete: () => { L.hidden = true; root.classList.add('is-loaded'); remeasure(); } })
+          .to(bar.parentElement, { autoAlpha: 0, duration: .25 }, 0).to($('.wm', L), { autoAlpha: 0, y: -10, duration: .35, ease: ease.soft }, 0)
+          .to(panel, { clipPath: 'inset(0% 0% 100% 0%)', duration: .75, ease: ease.inOut }, 0)
+          .add(intro, .3);
+      }
+    };
+    G.ticker.add(loadTick);
+  }
+
+  addEventListener('load', () => ST.refresh());
+})();
+</script>
+</body>
+</html>
